@@ -1,4 +1,6 @@
 import Reveal from "./Reveal";
+import apple from "/apple-logo-svgrepo-com.svg";
+import play from "/google-play-store-icon.svg";
 
 const AppDownload = () => {
   return (
@@ -27,7 +29,7 @@ const AppDownload = () => {
               href="#"
               className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-[14px] px-5 py-3.5 no-underline text-white hover:bg-white/[0.18] hover:-translate-y-0.5 transition-all"
             >
-              <span className="text-[1.6rem]">🍎</span>
+              <img src={apple} alt="" className="h-7 w-auto" />
               <div>
                 <small className="block text-[0.65rem] opacity-70 uppercase tracking-[0.08em]">
                   Download on the
@@ -41,7 +43,7 @@ const AppDownload = () => {
               href="#"
               className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-[14px] px-5 py-3.5 no-underline text-white hover:bg-white/[0.18] hover:-translate-y-0.5 transition-all"
             >
-              <span className="text-[1.6rem]">▶</span>
+              <img src={play} alt="" className="h-5 w-auto" />
               <div>
                 <small className="block text-[0.65rem] opacity-70 uppercase tracking-[0.08em]">
                   Get it on

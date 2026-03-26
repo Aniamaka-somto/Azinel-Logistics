@@ -1,0 +1,4870 @@
+<!-- Design System -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed": "#e5e2e1",
+              "inverse-primary": "#c0000f",
+              "surface-dim": "#131313",
+              surface: "#131313",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#0077bf",
+              tertiary: "#9acbff",
+              "on-primary-fixed": "#410001",
+              "on-error": "#690005",
+              "on-tertiary": "#003355",
+              "primary-fixed-dim": "#ffb4aa",
+              primary: "#ffb4aa",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#c8c6c5",
+              "secondary-container": "#474746",
+              "on-tertiary-fixed-variant": "#004a79",
+              "surface-bright": "#3a3939",
+              "primary-fixed": "#ffdad5",
+              outline: "#ad8883",
+              "on-secondary-container": "#b7b4b4",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              error: "#ffb4ab",
+              "on-primary-fixed-variant": "#930008",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "surface-variant": "#353534",
+              "surface-tint": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              background: "#131313",
+              "tertiary-fixed-dim": "#9acbff",
+              "primary-container": "#e01f1f",
+              "outline-variant": "#5d3f3c",
+              "on-primary": "#690004",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#001d34",
+              "on-surface": "#e5e2e1",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary-container": "#fff7f6",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#313030",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-fixed-variant": "#474746",
+              "tertiary-fixed": "#d0e4ff",
+            },
+            fontFamily: {
+              headline: ["Syne", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .kinetic-gradient {
+        background: linear-gradient(135deg, #e01f1f 0%, #b81010 100%);
+      }
+      .map-overlay-vignette {
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(10, 10, 10, 0.4) 100%
+        );
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-on-background font-body antialiased overflow-hidden h-screen"
+  >
+    <!-- Top Navigation Anchor (Manual construction based on JSON styles for Back/Context) -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0A]/40 backdrop-blur-xl"
+    >
+      <button
+        class="bg-[#111111]/80 p-2 rounded-full border border-white/5 shadow-lg active:scale-95 transition-transform"
+      >
+        <span class="material-symbols-outlined text-white">arrow_back</span>
+      </button>
+      <div
+        class="bg-[#111111]/80 px-4 py-2 rounded-full border border-white/5 flex items-center gap-2 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+      >
+        <div
+          class="w-2 h-2 bg-[#E01F1F] rounded-full animate-pulse shadow-[0_0_8px_#E01F1F]"
+        ></div>
+        <span
+          class="font-headline font-bold text-xs uppercase tracking-widest text-white"
+          >Live Tracking</span
+        >
+      </div>
+      <button
+        class="bg-[#111111]/80 p-2 rounded-full border border-white/5 shadow-lg"
+      >
+        <span class="material-symbols-outlined text-white">share</span>
+      </button>
+    </header>
+    <!-- Map Section (Top 60%) -->
+    <main class="relative h-[574px] w-full overflow-hidden">
+      <div class="absolute inset-0 grayscale contrast-125 brightness-50">
+        <img
+          class="w-full h-full object-cover"
+          data-alt="Detailed dark satellite view of a major highway network with glowing red path highlighting the travel route across varied terrain"
+          data-location="Nigeria"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm8Fj912_KrqEp9MC9w59byDg7mPDHbbBg4Mf2pPtuL-AH2TSc4jGSGZ2BMqkwRp6kMHg02pllDOlMwJgGexR_mmqkk9Yn-wHRbMmDhsZ7ZSTxDrQ1MCDs8S29FC0n6pwYarhgg1-XOUAHK9YOp05YC-Tlu1ODDeXyntW9ABXOBJbY3god0JA7B8YDGSSU21cV7X-VrgZUE1x9M6fYJGdjleej3rWIdZ_3ru82aTO1NnHWOk0ZSHlTmudk6LcgNmpBBphDaOItMcPM"
+        />
+      </div>
+      <!-- Map UI Elements -->
+      <div class="absolute inset-0 map-overlay-vignette"></div>
+      <!-- Red Route & Car Indicator (Conceptual Visual) -->
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none"
+      >
+        <div class="relative w-full h-full">
+          <!-- Arriving Pill -->
+          <div class="absolute top-[25%] left-1/2 -translate-x-1/2 z-20">
+            <div
+              class="bg-primary-container text-on-primary-container px-5 py-2.5 rounded-full font-headline font-black text-sm tracking-tight shadow-[0_10px_30px_rgba(224,31,31,0.4)] flex items-center gap-3"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >schedule</span
+              >
+              Arriving in 6h 20m
+            </div>
+          </div>
+          <!-- Custom Map Markers -->
+          <div class="absolute top-[40%] right-[30%]">
+            <div
+              class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl border-4 border-[#0A0A0A]"
+            >
+              <span
+                class="material-symbols-outlined text-black"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >directions_car</span
+              >
+            </div>
+            <!-- Pulsing Glow for Vehicle -->
+            <div
+              class="absolute inset-0 w-12 h-12 bg-[#E01F1F]/40 rounded-full animate-ping"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Bottom Pull-up Sheet (Surface #111) -->
+    <section
+      class="fixed bottom-0 left-0 right-0 z-50 bg-[#111111] rounded-t-[32px] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-white/5 pb-8"
+    >
+      <!-- Handlebar -->
+      <div class="flex justify-center pt-4 pb-2">
+        <div class="w-12 h-1.5 bg-[#222222] rounded-full"></div>
+      </div>
+      <div class="px-8 flex flex-col gap-6">
+        <!-- Trip Header -->
+        <div class="flex justify-between items-end">
+          <div>
+            <span
+              class="text-[#888888] font-label text-[10px] uppercase tracking-[0.2em] mb-1 block"
+              >Active Trip</span
+            >
+            <h2
+              class="font-headline font-black text-3xl tracking-tighter text-white"
+            >
+              PHC <span class="text-[#E01F1F]">→</span> Abuja
+            </h2>
+          </div>
+          <div class="text-right">
+            <span
+              class="text-[#888888] font-label text-[10px] uppercase tracking-[0.2em] mb-1 block"
+              >Estimated End</span
+            >
+            <span class="font-body font-bold text-white text-lg">08:45 PM</span>
+          </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="w-full h-1 bg-[#181818] rounded-full overflow-hidden">
+          <div
+            class="h-full kinetic-gradient w-[72%] rounded-full shadow-[0_0_10px_#E01F1F]"
+          ></div>
+        </div>
+        <!-- Driver Row -->
+        <div
+          class="bg-[#181818] p-4 rounded-[20px] flex items-center justify-between"
+        >
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <img
+                class="w-14 h-14 rounded-full object-cover border-2 border-[#222222]"
+                data-alt="Professional headshot of a mature driver with a friendly expression, soft studio lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-ecqyqoOd1FSrVZl6696YmMp2yrWWTx0ecT9yzXgoC3xEjbpEU3hOm7W-NQJUeSz7zc18SRPQ9rT9DXIg5bDI2jWU43Sfoiv6ZJsq1ush1BiMjYrBlxnhGQT55uk46GV85IvoMBB9437Dp-L0fxSoBRyMVOIqX5y2geZJ4iQWjd209kwBPkuxAvrxcChdkiUhuxIYUOaZNAQsHsBTliSYXyr1rqhqQwoDwHKMWHShkUO5-60nbYOMFDSantlNAgLr4Up2-HkXaaQU"
+              />
+              <div
+                class="absolute -bottom-1 -right-1 bg-[#E01F1F] text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#181818]"
+              >
+                4.9★
+              </div>
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-white">Marcus O.</h4>
+              <p class="text-[#888888] text-xs font-body">Black Tier Captain</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="w-11 h-11 rounded-full bg-[#222222] flex items-center justify-center text-white active:scale-90 transition-transform hover:bg-[#2a2a2a]"
+            >
+              <span class="material-symbols-outlined text-lg">call</span>
+            </button>
+            <button
+              class="w-11 h-11 rounded-full bg-[#222222] flex items-center justify-center text-white active:scale-90 transition-transform hover:bg-[#2a2a2a]"
+            >
+              <span class="material-symbols-outlined text-lg">chat_bubble</span>
+            </button>
+          </div>
+        </div>
+        <!-- Info Chips -->
+        <div class="grid grid-cols-2 gap-3">
+          <div
+            class="bg-[#181818] px-4 py-3 rounded-2xl flex flex-col gap-1 border border-white/5"
+          >
+            <span
+              class="text-[#888888] text-[9px] uppercase tracking-widest font-bold"
+              >Plate Number</span
+            >
+            <span class="font-headline font-bold text-white tracking-wide"
+              >AZL-409-TX</span
+            >
+          </div>
+          <div
+            class="bg-[#181818] px-4 py-3 rounded-2xl flex flex-col gap-1 border border-white/5"
+          >
+            <span
+              class="text-[#888888] text-[9px] uppercase tracking-widest font-bold"
+              >Vehicle</span
+            >
+            <span class="font-headline font-bold text-white tracking-wide"
+              >Lexus LX 570</span
+            >
+          </div>
+        </div>
+        <!-- SOS & Secondary Actions -->
+        <div class="mt-4">
+          <button
+            class="w-full py-4 rounded-xl border border-[#E01F1F]/40 text-[#E01F1F] font-headline font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 active:scale-95 transition-all hover:bg-[#E01F1F]/5"
+          >
+            <span
+              class="material-symbols-outlined text-lg"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >emergency_home</span
+            >
+            SOS Emergency
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Shared Navigation Component (BottomNavBar Filtered Logic) -->
+    <!-- Suppressed for Active Tracking focusing on the journey canvas -->
+  </body>
+</html>
+
+<!-- Live Tracking -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Ship a Package</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#0077bf",
+              "on-primary-container": "#fff7f6",
+              "secondary-fixed-dim": "#c8c6c5",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#474746",
+              "primary-fixed": "#ffdad5",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "on-secondary-fixed-variant": "#474746",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d0e4ff",
+              "surface-variant": "#353534",
+              error: "#ffb4ab",
+              "outline-variant": "#5d3f3c",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#9acbff",
+              "inverse-primary": "#c0000f",
+              "on-secondary-fixed": "#1c1b1b",
+              outline: "#ad8883",
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "primary-container": "#e01f1f",
+              "surface-tint": "#ffb4aa",
+              "on-tertiary": "#003355",
+              primary: "#ffb4aa",
+              "error-container": "#93000a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#930008",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary": "#313030",
+              tertiary: "#9acbff",
+              "surface-dim": "#131313",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#410001",
+              "on-primary": "#690004",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001d34",
+              background: "#131313",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-fixed-variant": "#004a79",
+              surface: "#131313",
+              "on-secondary-container": "#b7b4b4",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk"],
+              body: ["Manrope"],
+              label: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .bg-kinetic-noir {
+        background-color: #0a0a0a;
+      }
+      .surface-1 {
+        background-color: #111111;
+      }
+      .surface-2 {
+        background-color: #181818;
+      }
+      .accent-red {
+        color: #e01f1f;
+      }
+      .bg-accent-red {
+        background-color: #e01f1f;
+      }
+      .ghost-border {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .active-red-border {
+        border: 1.5px solid #e01f1f;
+      }
+      .red-dim-bg {
+        background-color: rgba(224, 31, 31, 0.1);
+      }
+      .cta-shadow {
+        box-shadow: 0 6px 20px rgba(224, 31, 31, 0.4);
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-kinetic-noir text-on-surface font-body selection:bg-primary-container/30"
+  >
+    <!-- Top Navigation Bar (Shared Component Logic) -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#0A0A0A]/80 backdrop-blur-xl z-50"
+    >
+      <div class="flex items-center gap-4">
+        <button
+          class="flex items-center justify-center p-2 hover:bg-surface-container-high rounded-full transition-all duration-200"
+        >
+          <span class="material-symbols-outlined text-on-surface"
+            >arrow_back</span
+          >
+        </button>
+        <h1
+          class="text-2xl font-syne font-black tracking-tighter uppercase italic text-[#E01F1F]"
+        >
+          Ship a Package
+        </h1>
+      </div>
+      <div
+        class="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden ghost-border"
+      >
+        <img
+          class="w-full h-full object-cover"
+          data-alt="Portrait of a professional man in a dark studio setting with cinematic lighting, reflecting luxury and authority"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRoiKLi4OmWqdOMmwsz0W9XOno9_oS2U2LxosivAuPB0-_LT1mSYVqrQv-Be8Rse7pOh06sX0Y_toP5Fdjn2D2yRdSAYpXBMLN1dakySz5A1Sgtzz0830O2BH8ZUYS5nuqFyMI9z8VfOFzPZhuNW3wSdnj3bx1DleLgnmcLul7_CvSofH_lWFGLY5jj9gPiqbEZRLGBfvmKjRk15qlrbMDOZyg6jg0zOkfbgvcbDB_Hwn3pHAJt7V2k48bO9HL9qcUI2G4eJydjaPB"
+        />
+      </div>
+    </header>
+    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-10">
+      <!-- Route Section -->
+      <section class="space-y-4">
+        <div class="relative surface-1 rounded-[20px] p-6 space-y-4">
+          <div class="absolute right-6 top-1/2 -translate-y-1/2 z-10">
+            <button
+              class="h-12 w-12 rounded-full bg-surface-2 flex items-center justify-center ghost-border hover:bg-surface-container-high active:scale-95 transition-all text-accent-red"
+            >
+              <span class="material-symbols-outlined">swap_vert</span>
+            </button>
+          </div>
+          <!-- Pickup Location -->
+          <div class="space-y-2 pr-12">
+            <label
+              class="font-syne font-bold text-[10px] uppercase tracking-widest text-[#888888]"
+              >Pickup Location</label
+            >
+            <div
+              class="flex items-center gap-3 bg-surface-2 px-4 py-4 rounded-[14px] ghost-border focus-within:border-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-accent-red"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >location_on</span
+              >
+              <input
+                class="bg-transparent border-none p-0 focus:ring-0 text-sm font-dm-sans w-full text-on-surface placeholder-[#555555]"
+                placeholder="Enter pickup address"
+                type="text"
+              />
+            </div>
+          </div>
+          <!-- Delivery Destination -->
+          <div class="space-y-2 pr-12">
+            <label
+              class="font-syne font-bold text-[10px] uppercase tracking-widest text-[#888888]"
+              >Delivery Destination</label
+            >
+            <div
+              class="flex items-center gap-3 bg-surface-2 px-4 py-4 rounded-[14px] ghost-border focus-within:border-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-accent-red"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >pin_drop</span
+              >
+              <input
+                class="bg-transparent border-none p-0 focus:ring-0 text-sm font-dm-sans w-full text-on-surface placeholder-[#555555]"
+                placeholder="Enter delivery destination"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Package Details Section -->
+      <section class="space-y-6">
+        <div class="flex justify-between items-end">
+          <h2
+            class="font-syne font-bold text-[11px] uppercase tracking-[0.2em] text-[#888888]"
+          >
+            Package Details
+          </h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Small Parcel -->
+          <div
+            class="surface-1 p-5 rounded-[20px] ghost-border flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-container-low transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-surface-2 flex items-center justify-center text-[#888888]"
+            >
+              <span class="material-symbols-outlined text-2xl">package_2</span>
+            </div>
+            <span class="font-dm-sans font-bold text-sm">Small Parcel</span>
+          </div>
+          <!-- Medium Box - Selected -->
+          <div
+            class="surface-1 p-5 rounded-[20px] active-red-border red-dim-bg flex flex-col items-center justify-center gap-3 cursor-pointer transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-accent-red"
+            >
+              <span
+                class="material-symbols-outlined text-2xl"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >inventory_2</span
+              >
+            </div>
+            <span class="font-dm-sans font-bold text-sm text-on-surface"
+              >Medium Box</span
+            >
+          </div>
+          <!-- Large Cargo -->
+          <div
+            class="surface-1 p-5 rounded-[20px] ghost-border flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-container-low transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-surface-2 flex items-center justify-center text-[#888888]"
+            >
+              <span class="material-symbols-outlined text-2xl"
+                >local_shipping</span
+              >
+            </div>
+            <span class="font-dm-sans font-bold text-sm">Large Cargo</span>
+          </div>
+          <!-- Custom -->
+          <div
+            class="surface-1 p-5 rounded-[20px] ghost-border flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-container-low transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-surface-2 flex items-center justify-center text-[#888888]"
+            >
+              <span class="material-symbols-outlined text-2xl"
+                >edit_square</span
+              >
+            </div>
+            <span class="font-dm-sans font-bold text-sm">Custom</span>
+          </div>
+        </div>
+        <!-- Weight Input -->
+        <div class="space-y-3">
+          <label
+            class="font-syne font-bold text-[10px] uppercase tracking-widest text-[#888888]"
+            >Estimated weight (kg)</label
+          >
+          <div class="relative">
+            <input
+              class="w-full bg-surface-2 px-6 py-5 rounded-[18px] ghost-border focus:border-primary-container focus:ring-0 text-xl font-syne font-bold text-on-surface placeholder-[#333333] transition-all"
+              placeholder="0.0"
+              step="0.1"
+              type="number"
+            />
+            <div
+              class="absolute right-6 top-1/2 -translate-y-1/2 font-syne font-bold text-accent-red"
+            >
+              KG
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Delivery Type Section -->
+      <section class="space-y-6">
+        <h2
+          class="font-syne font-bold text-[11px] uppercase tracking-[0.2em] text-[#888888]"
+        >
+          Delivery Type
+        </h2>
+        <div class="flex gap-2 p-1.5 bg-surface-1 rounded-full ghost-border">
+          <button
+            class="flex-1 py-3 px-4 rounded-full bg-accent-red text-white font-syne font-bold text-xs uppercase tracking-wider transition-all"
+          >
+            Door-to-Door
+          </button>
+          <button
+            class="flex-1 py-3 px-4 rounded-full bg-transparent text-[#888888] font-syne font-bold text-xs uppercase tracking-wider hover:text-white transition-all"
+          >
+            Terminal Pickup
+          </button>
+        </div>
+      </section>
+      <!-- CTA Section -->
+      <div class="pt-6">
+        <button
+          class="w-full bg-accent-red hover:bg-[#B81010] active:scale-95 text-white py-5 rounded-[14px] font-syne font-bold text-lg flex items-center justify-center gap-3 cta-shadow transition-all duration-300"
+        >
+          Get Delivery Quotes
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </main>
+    <!-- Bottom Navigation Bar (Shared Component Logic) -->
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#111111]/90 backdrop-blur-2xl rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined">home</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined">route</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#E01F1F] scale-110 transition-all duration-300"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >local_shipping</span
+        >
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+    <!-- Background Decorative Element (Kinetic Noir Aesthetic) -->
+    <div
+      class="fixed top-0 right-0 -z-10 w-96 h-96 bg-accent-red opacity-[0.03] blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"
+    ></div>
+    <div
+      class="fixed bottom-0 left-0 -z-10 w-64 h-64 bg-accent-red opacity-[0.02] blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2"
+    ></div>
+  </body>
+</html>
+
+<!-- Ship a Package -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#e01f1f",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-fixed": "#d0e4ff",
+              "tertiary-fixed-dim": "#9acbff",
+              "surface-bright": "#3a3939",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-fixed": "#410001",
+              "on-primary-container": "#fff7f6",
+              "on-tertiary-fixed-variant": "#004a79",
+              "on-tertiary-fixed": "#001d34",
+              "on-tertiary": "#003355",
+              error: "#ffb4ab",
+              "surface-container": "#201f1f",
+              "secondary-container": "#474746",
+              "inverse-on-surface": "#313030",
+              "surface-variant": "#353534",
+              background: "#0A0A0A",
+              "secondary-fixed": "#e5e2e1",
+              secondary: "#c8c6c5",
+              "on-error": "#690005",
+              "on-primary-fixed-variant": "#930008",
+              "surface-container-low": "#111111",
+              "surface-dim": "#0A0A0A",
+              "secondary-fixed-dim": "#c8c6c5",
+              "primary-fixed": "#ffdad5",
+              "on-surface": "#e5e2e1",
+              "on-secondary-container": "#b7b4b4",
+              outline: "#ad8883",
+              "on-secondary": "#313030",
+              "inverse-primary": "#c0000f",
+              "on-background": "#e5e2e1",
+              "surface-tint": "#ffb4aa",
+              "outline-variant": "#5d3f3c",
+              "primary-fixed-dim": "#ffb4aa",
+              "tertiary-container": "#0077bf",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary": "#690004",
+              "surface-container-highest": "#353534",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-container": "#f7f9ff",
+              primary: "#E01F1F",
+              "surface-container-high": "#181818",
+              surface: "#131313",
+              "on-secondary-fixed-variant": "#474746",
+              tertiary: "#9acbff",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.25rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-panel {
+        background: rgba(17, 17, 17, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface font-body min-h-screen pb-32">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full"
+    >
+      <div class="flex flex-col">
+        <span
+          class="text-[10px] font-dm-sans uppercase tracking-[0.2em] text-secondary"
+          >Good morning,</span
+        >
+        <h1 class="font-syne font-bold text-xl tracking-tight text-on-surface">
+          Chidinma 👋
+        </h1>
+      </div>
+      <div
+        class="relative w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-xl border border-white/5"
+      >
+        <span class="material-symbols-outlined text-on-surface"
+          >notifications</span
+        >
+        <span
+          class="absolute top-3 right-3 w-2.5 h-2.5 bg-primary-container rounded-full border-2 border-background"
+        ></span>
+      </div>
+    </header>
+    <main class="pt-24 px-6 space-y-8">
+      <!-- Hero Card: Trip Planning -->
+      <section
+        class="bg-surface-container-high p-6 rounded-3xl shadow-2xl relative overflow-hidden"
+      >
+        <div
+          class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 blur-[60px] rounded-full"
+        ></div>
+        <div class="space-y-4 relative z-10">
+          <div class="space-y-3">
+            <div
+              class="flex items-center gap-4 bg-surface-container-low p-4 rounded-2xl border border-white/[0.03]"
+            >
+              <span
+                class="material-symbols-outlined text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >location_on</span
+              >
+              <div class="flex flex-col">
+                <span
+                  class="text-[10px] font-syne uppercase tracking-wider text-secondary"
+                  >Pickup Point</span
+                >
+                <span class="font-dm-sans font-medium">Port Harcourt</span>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 bg-surface-container-low p-4 rounded-2xl border border-white/[0.03]"
+            >
+              <span class="material-symbols-outlined text-secondary">flag</span>
+              <div class="flex flex-col">
+                <span
+                  class="text-[10px] font-syne uppercase tracking-wider text-secondary"
+                  >Destination</span
+                >
+                <span class="font-dm-sans font-medium text-secondary/60"
+                  >Where to?</span
+                >
+              </div>
+            </div>
+          </div>
+          <button
+            class="w-full bg-primary-container hover:bg-primary-container/90 text-white font-syne font-bold py-5 rounded-2xl flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(224,31,31,0.4)] transition-all active:scale-95"
+          >
+            Find Available Rides
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </button>
+        </div>
+      </section>
+      <!-- Chips Row -->
+      <section class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+        <button
+          class="flex items-center gap-2 bg-primary-container text-white px-6 py-3 rounded-full font-syne font-bold whitespace-nowrap active:scale-95 transition-transform"
+        >
+          <span
+            class="material-symbols-outlined text-sm"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >directions_car</span
+          >
+          Ride
+        </button>
+        <button
+          class="flex items-center gap-2 bg-surface-container-high text-secondary px-6 py-3 rounded-full font-syne font-bold whitespace-nowrap border border-white/[0.05]"
+        >
+          <span class="material-symbols-outlined text-sm">inventory_2</span>
+          Logistics
+        </button>
+        <button
+          class="flex items-center gap-2 bg-surface-container-high text-secondary px-6 py-3 rounded-full font-syne font-bold whitespace-nowrap border border-white/[0.05]"
+        >
+          <span class="material-symbols-outlined text-sm">cached</span>
+          Recurring
+        </button>
+      </section>
+      <!-- Upcoming Trip Section -->
+      <section class="space-y-4">
+        <div class="flex justify-between items-center">
+          <h2
+            class="text-[10px] font-dm-sans font-bold uppercase tracking-[0.2em] text-secondary"
+          >
+            Upcoming Trip
+          </h2>
+          <button
+            class="text-[10px] font-syne font-bold text-primary uppercase tracking-wider"
+          >
+            View All
+          </button>
+        </div>
+        <div
+          class="bg-surface-container-high rounded-2xl border-l-[3px] border-primary p-5 shadow-lg relative overflow-hidden group"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div class="space-y-1">
+              <div class="flex items-center gap-3">
+                <span class="font-syne font-bold text-xl">PHC</span>
+                <span class="material-symbols-outlined text-primary"
+                  >trending_flat</span
+                >
+                <span class="font-syne font-bold text-xl">Lagos</span>
+              </div>
+              <div class="flex gap-2 flex-wrap">
+                <span
+                  class="bg-surface-container-low px-2 py-1 rounded text-[10px] font-dm-sans text-secondary border border-white/[0.05]"
+                  >Tomorrow · 6:30 AM</span
+                >
+                <span
+                  class="bg-surface-container-low px-2 py-1 rounded text-[10px] font-dm-sans text-secondary border border-white/[0.05]"
+                  >SUV</span
+                >
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="block font-syne font-bold text-primary text-lg"
+                >₦28,500</span
+              >
+              <span class="text-[10px] text-secondary font-dm-sans"
+                >Shared Trip</span
+              >
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between pt-4 border-t border-white/[0.05]"
+          >
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <img
+                  class="w-10 h-10 rounded-full object-cover grayscale brightness-125"
+                  data-alt="professional male driver with a friendly expression in a dark studio setting with warm rim lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkyLn5_sR7xpWQuhHdDohnY1MpoLEHSUAzDYdiv2_mWvjHNxVoRB7qy97rrdKgOSSyQKdVohhfoFRZjQXz3f4b7o4RFndjOXSJ2MBZp5p0dyZcLE_P7JXyI-UsnvxLfIPEOvlYlDU6N_hde1ZYFQsuU3E6AqJKIdUabWRljqzAFGUa-59H4JZu69HXemx5tnSqS-BL95A713JvfCIR_5plJj3Og6sQMTe7RWfvXRmQoA_wsWVtZe0qd81rz3jzAwVcisWeX0eXCet5"
+                />
+                <div
+                  class="absolute -bottom-1 -right-1 bg-green-500 w-3 h-3 rounded-full border-2 border-surface-container-high"
+                ></div>
+              </div>
+              <div>
+                <p class="text-sm font-syne font-bold">Emeka K.</p>
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-[12px] text-yellow-500"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span class="text-[10px] text-secondary font-dm-sans"
+                    >4.9 (124 trips)</span
+                  >
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+            >
+              <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >chat_bubble</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Map Quick Glance (Contextual Card) -->
+      <section
+        class="bg-surface-container-high rounded-3xl overflow-hidden p-2 border border-white/[0.03]"
+      >
+        <div
+          class="relative h-40 rounded-2xl overflow-hidden grayscale contrast-125"
+        >
+          <img
+            class="w-full h-full object-cover opacity-60"
+            data-alt="abstract stylized dark map of an urban city center with high contrast roads and neon red highlights"
+            data-location="Lagos, Nigeria"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ghOyIpj9Caw6z_bS6F_l4jK7A4Gs2XeSVM1g72HDJpoZgxoA4cSjmwdWWoxM40Z6XsOBisjryz02vwdh7j2WGhWvZnyluSJYZdpeyvN05idoPvNFYSSDPzW3gOnjI9GUQvfWJOAVGkJQwyqgrHRbllLDckZt2liYUFSJZ7Hu9beXjLCeAel3hjdHdAvlSAMl88kUYmGIxcnWLRRy_KxNpvX58QTs07XTqSHE3AcdA_R21er0FVTIQZycvgDiL3eWbcgWO78B0Bm6"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-transparent"
+          ></div>
+          <div class="absolute bottom-4 left-4">
+            <div
+              class="flex items-center gap-2 bg-background/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10"
+            >
+              <span
+                class="w-2 h-2 bg-primary rounded-full animate-pulse"
+              ></span>
+              <span
+                class="text-[10px] font-syne font-bold uppercase tracking-widest text-on-surface"
+                >Live Tracking Active</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full z-50 rounded-t-[24px] bg-[#111111]/90 backdrop-blur-20px shadow-[0_-6px_20px_rgba(224,31,31,0.15)] flex justify-around items-center h-20 px-4 w-full"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-[#E01F1F] drop-shadow-[0_0_8px_rgba(224,31,31,0.6)] scale-110 transition-transform"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >home</span
+        >
+        <span
+          class="font-dm-sans text-[10px] font-bold uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-gray-500 hover:text-[#E01F1F]/80"
+        href="#"
+      >
+        <span class="material-symbols-outlined">route</span>
+        <span
+          class="font-dm-sans text-[10px] font-bold uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-gray-500 hover:text-[#E01F1F]/80"
+        href="#"
+      >
+        <span class="material-symbols-outlined">local_shipping</span>
+        <span
+          class="font-dm-sans text-[10px] font-bold uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-gray-500 hover:text-[#E01F1F]/80"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+        <span
+          class="font-dm-sans text-[10px] font-bold uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>
+
+<!-- Home (Dashboard) -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics — Trip Search Results</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed": "#e5e2e1",
+              "inverse-primary": "#c0000f",
+              "surface-dim": "#131313",
+              surface: "#131313",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#0077bf",
+              tertiary: "#9acbff",
+              "on-primary-fixed": "#410001",
+              "on-error": "#690005",
+              "on-tertiary": "#003355",
+              "primary-fixed-dim": "#ffb4aa",
+              primary: "#ffb4aa",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#c8c6c5",
+              "secondary-container": "#474746",
+              "on-tertiary-fixed-variant": "#004a79",
+              "surface-bright": "#3a3939",
+              "primary-fixed": "#ffdad5",
+              outline: "#ad8883",
+              "on-secondary-container": "#b7b4b4",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              error: "#ffb4ab",
+              "on-primary-fixed-variant": "#930008",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "surface-variant": "#353534",
+              "surface-tint": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              background: "#131313",
+              "tertiary-fixed-dim": "#9acbff",
+              "primary-container": "#e01f1f",
+              "outline-variant": "#5d3f3c",
+              "on-primary": "#690004",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#001d34",
+              "on-surface": "#e5e2e1",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary-container": "#fff7f6",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#313030",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-fixed-variant": "#474746",
+              "tertiary-fixed": "#d0e4ff",
+            },
+            fontFamily: {
+              headline: ["Syne", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+              label: ["Syne", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0a0a;
+        color: #e5e2e1;
+        font-family: "DM Sans", sans-serif;
+      }
+      .syne-font {
+        font-family: "Syne", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .red-glow {
+        box-shadow: 0 0 15px rgba(224, 31, 31, 0.4);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="antialiased overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-2xl flex justify-between items-center px-6 h-16 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+    >
+      <button class="text-[#E01F1F] active:scale-95 transition-transform">
+        <span class="material-symbols-outlined" data-icon="menu">menu</span>
+      </button>
+      <h1
+        class="text-2xl font-['Syne'] font-black text-[#E01F1F] tracking-tighter uppercase"
+      >
+        AZINEL
+      </h1>
+      <div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+        <img
+          alt="User Profile"
+          class="w-full h-full object-cover"
+          data-alt="portrait of a professional male traveler in a sharp suit against a neutral background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-DHClHLOm8g6I4f1GTp9S8Dvsz2vJ0RPVgc480oHqVkw_eY7xg_tWrb5aR3d3aIforcvQ1IzK0IM95bZlPXUaJZiR7fgDGnz_2EF8InE2YpFs2iplg9l2w6JWcvJEyHM4pMROE3L6SIGofZOoyXtDLYGJ1ceeyARfrd09rvGaZ7MgLmOhm6mipoOAA6Llqe-Jaii1jR6p4AQVrrUFaM9yNHiVZ2gw910rlZnhsCaAXMLl_JGIMSpdTRBtGP78OZye1bsp-qERr27T"
+        />
+      </div>
+    </header>
+    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+      <!-- Compact Route Header -->
+      <section class="mb-8">
+        <div class="flex justify-between items-end mb-2">
+          <div>
+            <h2
+              class="syne-font text-3xl font-extrabold tracking-tighter text-white"
+            >
+              PHC → Abuja
+            </h2>
+            <p
+              class="text-[#888888] text-sm font-medium mt-1 uppercase tracking-widest"
+            >
+              Oct 24 • 1 Passenger
+            </p>
+          </div>
+          <button
+            class="bg-[#181818] p-3 rounded-xl border border-white/5 active:scale-90 transition-all"
+          >
+            <span
+              class="material-symbols-outlined text-[#E01F1F]"
+              data-icon="tune"
+              >tune</span
+            >
+          </button>
+        </div>
+      </section>
+      <!-- Horizontal Filter Chips -->
+      <section class="flex gap-3 overflow-x-auto pb-6 no-scrollbar -mx-6 px-6">
+        <button
+          class="flex-shrink-0 bg-[#E01F1F] text-white px-6 py-2 rounded-full syne-font font-bold text-xs uppercase tracking-widest red-glow"
+        >
+          All
+        </button>
+        <button
+          class="flex-shrink-0 bg-[#111111] text-[#888888] px-6 py-2 rounded-full syne-font font-bold text-xs uppercase tracking-widest border border-white/5 hover:text-white transition-colors"
+        >
+          Sedan
+        </button>
+        <button
+          class="flex-shrink-0 bg-[#111111] text-[#888888] px-6 py-2 rounded-full syne-font font-bold text-xs uppercase tracking-widest border border-white/5 hover:text-white transition-colors"
+        >
+          SUV
+        </button>
+        <button
+          class="flex-shrink-0 bg-[#111111] text-[#888888] px-6 py-2 rounded-full syne-font font-bold text-xs uppercase tracking-widest border border-white/5 hover:text-white transition-colors"
+        >
+          Luxury
+        </button>
+        <button
+          class="flex-shrink-0 bg-[#111111] text-[#888888] px-6 py-2 rounded-full syne-font font-bold text-xs uppercase tracking-widest border border-white/5 hover:text-white transition-colors"
+        >
+          Van
+        </button>
+      </section>
+      <!-- Driver Result Cards -->
+      <div class="space-y-6">
+        <!-- Result Card 1 -->
+        <article
+          class="bg-[#181818] rounded-[20px] p-5 shadow-2xl relative overflow-hidden group"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <img
+                  alt="Driver"
+                  class="w-14 h-14 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  data-alt="Close up portrait of an experienced smiling professional male driver in a polo shirt"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ku5G7AuuWn_LHCSFUwlzRYnV8nLCRuNAoHj47EiK9EiMf1_2xzs3-oZBlZek6aP_suGQ9cns46PCBbfAUwUcU74PKb9lJzM3ovMrNXQlMu95bTSQRAxS2CefkeM9FKji1z6vqiXwH64Y8lNIHAxB6yZBJTU3ISayrSvG60kOSiQUiv0kgarOhiYJeK2h9D4AmkMyJczPM4S_YQROyAYidLB_OdxLA5Mb2o1wbYngDOfpiWeCC59QkS78_EVJVSW0ZVhJJ-EWO9k0"
+                />
+                <span
+                  class="absolute -bottom-1 -right-1 bg-[#E01F1F] w-4 h-4 rounded-full border-2 border-[#181818] flex items-center justify-center"
+                >
+                  <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                </span>
+              </div>
+              <div>
+                <h3 class="syne-font font-bold text-lg text-white">
+                  Kingsley Okoro
+                </h3>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center text-[#E01F1F]">
+                    <span
+                      class="material-symbols-outlined text-[16px]"
+                      data-icon="star"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold ml-1">4.9</span>
+                  </div>
+                  <span
+                    class="text-[#888888] text-[10px] uppercase tracking-tighter bg-white/5 px-2 py-0.5 rounded"
+                    >Mercedes E-Class</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <p
+                class="text-[#888888] text-[10px] uppercase tracking-widest mb-1"
+              >
+                Departure
+              </p>
+              <p class="syne-font font-bold text-white">09:30 AM</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-white/5 pt-4"
+          >
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <span class="syne-font font-black text-2xl text-white"
+                  >₦45,000</span
+                >
+                <span
+                  class="bg-[#E01F1F]/20 text-[#E01F1F] text-[9px] font-black syne-font uppercase px-2 py-1 rounded"
+                  >Negotiate</span
+                >
+              </div>
+              <p class="text-[#888888] text-[10px] mt-1 italic">
+                Toll fees included
+              </p>
+            </div>
+            <button
+              class="bg-[#E01F1F] hover:bg-[#B81010] text-white py-3 px-8 rounded-xl syne-font font-bold text-sm transition-all active:scale-95 red-glow"
+            >
+              Book
+            </button>
+          </div>
+        </article>
+        <!-- Result Card 2 -->
+        <article
+          class="bg-[#181818] rounded-[20px] p-5 shadow-2xl relative overflow-hidden group"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <img
+                  alt="Driver"
+                  class="w-14 h-14 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  data-alt="Portrait of a confident female private chauffeur in a clean dark uniform"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlVkqv_azrKiQ2anX5JVLPJSGYlmJmtsljL5u03qaNz_z0YrGb1QRwWuC9lFKTfIdWZiM-SBY6EO1xzNm_LyC1WNn9Zqe_ec_LR1oMfvWaIzSXRWioeOFZNpQFKp8midx6bteuMd2iBe8mME2EeTxHVOEQ_fAq0oVm51dhnc50_Ps1_SfNj9_Ev9Q3pBLVids_ghOLEsBx4tP-LVRj6fOAIWtKkTFeBtf6MS-jPXl69aQofeBUYCqYGk4_Gua_hFfsfaSIKdch4W6v"
+                />
+              </div>
+              <div>
+                <h3 class="syne-font font-bold text-lg text-white">
+                  Sade Williams
+                </h3>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center text-[#E01F1F]">
+                    <span
+                      class="material-symbols-outlined text-[16px]"
+                      data-icon="star"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold ml-1">4.7</span>
+                  </div>
+                  <span
+                    class="text-[#888888] text-[10px] uppercase tracking-tighter bg-white/5 px-2 py-0.5 rounded"
+                    >Toyota Land Cruiser</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <p
+                class="text-[#888888] text-[10px] uppercase tracking-widest mb-1"
+              >
+                Departure
+              </p>
+              <p class="syne-font font-bold text-white">10:45 AM</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-white/5 pt-4"
+          >
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <span class="syne-font font-black text-2xl text-white"
+                  >₦62,000</span
+                >
+                <span
+                  class="bg-[#E01F1F]/20 text-[#E01F1F] text-[9px] font-black syne-font uppercase px-2 py-1 rounded"
+                  >Negotiate</span
+                >
+              </div>
+              <p class="text-[#888888] text-[10px] mt-1 italic">
+                Executive SUV experience
+              </p>
+            </div>
+            <button
+              class="bg-[#E01F1F] hover:bg-[#B81010] text-white py-3 px-8 rounded-xl syne-font font-bold text-sm transition-all active:scale-95 red-glow"
+            >
+              Book
+            </button>
+          </div>
+        </article>
+        <!-- Result Card 3 -->
+        <article
+          class="bg-[#181818] rounded-[20px] p-5 shadow-2xl relative overflow-hidden group"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <img
+                  alt="Driver"
+                  class="w-14 h-14 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  data-alt="smiling mature african driver with glasses and professional attitude"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDNEvcrdOCE9UCxM8wOS9BIV2bvwW3tb-9_QJaoGbP4dy-e-Hh59BWr1ZCY6i2liLYdCS3Tj5M9oY-JByKooaqUzYRdNsQmFcz1O-UQyEULVEPNKfSi33JWfdTqL90fdq_gLC_b-idt3xcFgY69tRR0tlLK9HePVUDtA7ah--BTo_D3rqlEuBcgGgAIF0zrm-k9VCtkESGKNX3_zxrjvsqnPqZXazRqhwIvo2WuQZcvnAsYM8SgDPc0Ao8vPM1ZDztLr-6dAn2YvuG"
+                />
+              </div>
+              <div>
+                <h3 class="syne-font font-bold text-lg text-white">
+                  Ibrahim Musa
+                </h3>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center text-[#E01F1F]">
+                    <span
+                      class="material-symbols-outlined text-[16px]"
+                      data-icon="star"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold ml-1">5.0</span>
+                  </div>
+                  <span
+                    class="text-[#888888] text-[10px] uppercase tracking-tighter bg-white/5 px-2 py-0.5 rounded"
+                    >Lexus ES 350</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <p
+                class="text-[#888888] text-[10px] uppercase tracking-widest mb-1"
+              >
+                Departure
+              </p>
+              <p class="syne-font font-bold text-white">01:15 PM</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-white/5 pt-4"
+          >
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <span class="syne-font font-black text-2xl text-white"
+                  >₦48,500</span
+                >
+                <span
+                  class="bg-[#E01F1F]/20 text-[#E01F1F] text-[9px] font-black syne-font uppercase px-2 py-1 rounded"
+                  >Negotiate</span
+                >
+              </div>
+              <p class="text-[#888888] text-[10px] mt-1 italic">
+                Free WiFi &amp; Water
+              </p>
+            </div>
+            <button
+              class="bg-[#E01F1F] hover:bg-[#B81010] text-white py-3 px-8 rounded-xl syne-font font-bold text-sm transition-all active:scale-95 red-glow"
+            >
+              Book
+            </button>
+          </div>
+        </article>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full rounded-t-[24px] z-50 bg-[#111111]/90 backdrop-blur-xl flex justify-around items-center py-4 px-8 shadow-[0_-10px_40px_rgba(224,31,31,0.15)]"
+    >
+      <button
+        class="flex items-center justify-center text-[#E01F1F] bg-[#E01F1F]/10 rounded-full p-3 shadow-[0_0_15px_rgba(224,31,31,0.4)] transition-all active:scale-90"
+      >
+        <span class="material-symbols-outlined" data-icon="search">search</span>
+      </button>
+      <button
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90"
+      >
+        <span class="material-symbols-outlined" data-icon="explore"
+          >explore</span
+        >
+      </button>
+      <button
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90"
+      >
+        <span class="material-symbols-outlined" data-icon="analytics"
+          >analytics</span
+        >
+      </button>
+      <button
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+      </button>
+    </nav>
+  </body>
+</html>
+
+<!-- Trip Search Results -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics | User Profile</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#0077bf",
+              "on-primary-container": "#fff7f6",
+              "secondary-fixed-dim": "#c8c6c5",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#474746",
+              "primary-fixed": "#ffdad5",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "on-secondary-fixed-variant": "#474746",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d0e4ff",
+              "surface-variant": "#353534",
+              error: "#ffb4ab",
+              "outline-variant": "#5d3f3c",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#9acbff",
+              "inverse-primary": "#c0000f",
+              "on-secondary-fixed": "#1c1b1b",
+              outline: "#ad8883",
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "primary-container": "#e01f1f",
+              "surface-tint": "#ffb4aa",
+              "on-tertiary": "#003355",
+              primary: "#ffb4aa",
+              "error-container": "#93000a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#930008",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary": "#313030",
+              tertiary: "#9acbff",
+              "surface-dim": "#131313",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#410001",
+              "on-primary": "#690004",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001d34",
+              background: "#0A0A0A",
+              "surface-container-low": "#111111",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-fixed-variant": "#004a79",
+              surface: "#0A0A0A",
+              "on-secondary-container": "#b7b4b4",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-[#e5e2e1] font-body selection:bg-[#E01F1F]/30 overflow-x-hidden"
+  >
+    <!-- Top AppBar -->
+    <nav
+      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#0A0A0A]/80 backdrop-blur-xl z-50 shadow-[0_6px_20px_rgba(224,31,31,0.2)]"
+    >
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-[#E01F1F]">menu</span>
+        <span
+          class="text-2xl font-black tracking-tighter text-[#E01F1F] italic font-syne uppercase"
+          >AZINEL</span
+        >
+      </div>
+      <div class="w-10 h-10 rounded-full border-2 border-[#E01F1F] p-0.5">
+        <img
+          alt="Profile"
+          class="w-full h-full rounded-full object-cover"
+          data-alt="Close up portrait of a confident stylish man with sharp features against a dark moody architectural background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq-_B-UddvCsBMBANbVtX1Ds0Z2_U5M_goGtQOMKg8NHK6APqPCgtGw3jUkK8l0KlisxDjJv0EpH5jj8lAtSH_H8J-MlfISUb2mUJr6RiwdBxPJWrlfnSr0XomkeUMWXMH2SjGF_fTlXcNqkDXbbo5scyk8nZpR1VBLWfz39sEzLh_r4hsmaX6OHWOhn45Q7sfKdrZvQSRgpOYLtotoAJPbs00s5kCDXZFW0XtzTqdxG3Zi-ahUZFJq2vd6aC8XPJAmaLcYZoOBPzZ"
+        />
+      </div>
+    </nav>
+    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+      <!-- Header / Hero Section -->
+      <section class="flex flex-col items-center mb-12">
+        <div class="relative group">
+          <div
+            class="w-32 h-32 rounded-full border-4 border-[#E01F1F] p-1 shadow-[0_0_30px_rgba(224,31,31,0.3)]"
+          >
+            <img
+              alt="User Avatar"
+              class="w-full h-full rounded-full object-cover"
+              data-alt="Portrait of a professional man with modern short haircut and dark eyes, soft cinematic red rim lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3llxZTrl7qM2J30ygRZ5fAr8M1xabgpXPUuA0miz-2ljYQjb1lRYmXz-OT5syB_dHB0oooSYk88AtF51zDAusa6eDP0NpvzvNUE9H5Ae-btKIeFiywXhTgO5iyJPDEvXuPlT_S8QDQizO37iXph0HCV8SnZiuPefYl4BgcOHg7ZwlRWQqQlB5Cri2tHy2ylsncts-edCN-lBDuF3uElyUTT7wfiIpWFxAcEV__ABRve8ibxcao8HavKlgv3_sKB2k1-DWZrKPXqjj"
+            />
+          </div>
+          <button
+            class="absolute bottom-1 right-1 bg-[#E01F1F] w-10 h-10 rounded-full flex items-center justify-center border-4 border-[#0A0A0A] hover:scale-110 transition-transform"
+          >
+            <span class="material-symbols-outlined text-white text-lg"
+              >edit</span
+            >
+          </button>
+        </div>
+        <h1
+          class="mt-6 font-syne font-black text-4xl text-white tracking-tighter uppercase italic"
+        >
+          Oluwatobi Azinel
+        </h1>
+        <p
+          class="font-dm-sans text-[#888888] mt-1 tracking-widest text-sm uppercase"
+        >
+          Elite Member • Since 2022
+        </p>
+      </section>
+      <!-- Stats Bento Row -->
+      <section class="grid grid-cols-3 gap-3 mb-12">
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex flex-col items-center justify-center border border-white/5"
+        >
+          <span class="font-syne font-bold text-2xl text-white">28</span>
+          <span
+            class="font-dm-sans text-[10px] text-[#888888] uppercase tracking-widest mt-1"
+            >Trips</span
+          >
+        </div>
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex flex-col items-center justify-center border border-white/5"
+        >
+          <span class="font-syne font-bold text-2xl text-white">4</span>
+          <span
+            class="font-dm-sans text-[10px] text-[#888888] uppercase tracking-widest mt-1"
+            >Shipments</span
+          >
+        </div>
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex flex-col items-center justify-center border border-white/5"
+        >
+          <span class="font-syne font-bold text-2xl text-white text-[#E01F1F]"
+            >₦340k</span
+          >
+          <span
+            class="font-dm-sans text-[10px] text-[#888888] uppercase tracking-widest mt-1"
+            >Saved</span
+          >
+        </div>
+      </section>
+      <!-- Settings Groups -->
+      <div class="space-y-10">
+        <!-- Account -->
+        <section>
+          <h3
+            class="font-syne font-bold text-[11px] text-[#888888] uppercase tracking-[0.2em] mb-4 px-2"
+          >
+            Account
+          </h3>
+          <div class="bg-[#111111] rounded-[24px] overflow-hidden">
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >person_outline</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Personal Information</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >payments</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Payment Methods</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Preferences -->
+        <section>
+          <h3
+            class="font-syne font-bold text-[11px] text-[#888888] uppercase tracking-[0.2em] mb-4 px-2"
+          >
+            Preferences
+          </h3>
+          <div class="bg-[#111111] rounded-[24px] overflow-hidden">
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >notifications_active</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Notifications</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >dark_mode</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Display &amp; Theme</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Safety -->
+        <section>
+          <h3
+            class="font-syne font-bold text-[11px] text-[#888888] uppercase tracking-[0.2em] mb-4 px-2"
+          >
+            Safety
+          </h3>
+          <div class="bg-[#111111] rounded-[24px] overflow-hidden">
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >verified_user</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Security Center</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >emergency_share</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Trusted Contacts</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Support & Legal -->
+        <section>
+          <h3
+            class="font-syne font-bold text-[11px] text-[#888888] uppercase tracking-[0.2em] mb-4 px-2"
+          >
+            Support &amp; Legal
+          </h3>
+          <div class="bg-[#111111] rounded-[24px] overflow-hidden">
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group border-b border-white/5"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >help</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Help Center</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between p-5 hover:bg-[#181818] transition-colors cursor-pointer group"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="material-symbols-outlined text-[#888888] group-hover:text-[#E01F1F]"
+                  >description</span
+                >
+                <span class="font-dm-sans font-medium text-white"
+                  >Terms of Service</span
+                >
+              </div>
+              <span
+                class="material-symbols-outlined text-[#333333] group-hover:text-white"
+                >chevron_right</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Danger Zone -->
+        <section class="pt-8 space-y-4">
+          <button
+            class="w-full bg-[#111111] p-5 rounded-[18px] flex items-center justify-center gap-3 active:scale-[0.98] transition-all group"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F]">logout</span>
+            <span
+              class="font-syne font-bold uppercase tracking-widest text-[#E01F1F]"
+              >Log Out</span
+            >
+          </button>
+          <button
+            class="w-full p-4 flex items-center justify-center gap-2 active:opacity-50 transition-opacity"
+          >
+            <span
+              class="font-dm-sans text-xs text-[#E01F1F] opacity-60 uppercase tracking-widest"
+              >Delete Account</span
+            >
+          </button>
+          <p
+            class="text-center text-[#333333] text-[10px] font-dm-sans tracking-widest mt-4 uppercase"
+          >
+            Version 4.12.0 • Build Kinetic
+          </p>
+        </section>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#111111]/90 backdrop-blur-2xl rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">home</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">route</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">local_shipping</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </a>
+      <!-- Active Tab: Profile -->
+      <a
+        class="flex flex-col items-center justify-center text-[#E01F1F] scale-110 transition-all duration-300"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >person</span
+        >
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>
+
+<!-- Profile & Settings -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Payments</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#0077bf",
+              "on-primary-container": "#fff7f6",
+              "secondary-fixed-dim": "#c8c6c5",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#474746",
+              "primary-fixed": "#ffdad5",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "on-secondary-fixed-variant": "#474746",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d0e4ff",
+              "surface-variant": "#353534",
+              error: "#ffb4ab",
+              "outline-variant": "#5d3f3c",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#9acbff",
+              "inverse-primary": "#c0000f",
+              "on-secondary-fixed": "#1c1b1b",
+              outline: "#ad8883",
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "primary-container": "#e01f1f",
+              "surface-tint": "#ffb4aa",
+              "on-tertiary": "#003355",
+              primary: "#ffb4aa",
+              "error-container": "#93000a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#930008",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary": "#313030",
+              tertiary: "#9acbff",
+              "surface-dim": "#131313",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#410001",
+              "on-primary": "#690004",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001d34",
+              background: "#0A0A0A",
+              surface: "#111111",
+              "surface-container-low": "#181818",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-fixed-variant": "#004a79",
+              "on-secondary-container": "#b7b4b4",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk"],
+              body: ["Manrope"],
+              label: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .bg-kinetic-noir {
+        background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
+      }
+      .red-glow {
+        box-shadow: 0 6px 20px rgba(224, 31, 31, 0.2);
+      }
+      .glass-panel {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-on-background font-dm-sans selection:bg-primary-container selection:text-white pb-32"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#0A0A0A]/80 backdrop-blur-xl z-50 tonal-shift shadow-[0_6px_20px_rgba(224,31,31,0.2)]"
+    >
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-[#E01F1F]">menu</span>
+        <h1
+          class="text-2xl font-syne font-black tracking-tighter text-[#E01F1F] italic uppercase"
+        >
+          AZINEL
+        </h1>
+      </div>
+      <div
+        class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-white/10"
+      >
+        <img
+          alt="Profile"
+          class="w-full h-full object-cover"
+          data-alt="Close up portrait of a professional man in a dark turtleneck looking confident, soft studio lighting on dark background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3iBf0OGQobQ2qDGMUXolDuZkIXuDHMsBxRUs9mR8QFdv8Z_DMFCKpWP48ZbDtBgZNc41n3ppIaFuhAjxJ5Af1wUmfIYK1rI8AN0S57_g-vrwoGiD32MfHLPjS3Hqlcj3569mRC1nCMAtONo8Jr_9GI-phB6wLQbl6ZFGnHgIIa9eOei2wHfIcIkmUB-sylEIVoM7o48HK-wRcBvVNqA0UcI8OwY1EOFWQ4t5jEQ_FqoMQXY9s0t8QpRbmBKui88BcbCE34oNge2u1"
+        />
+      </div>
+    </header>
+    <main class="pt-24 px-6 max-w-2xl mx-auto">
+      <!-- Screen Title -->
+      <h2 class="font-syne font-bold text-4xl mb-8 tracking-tight text-white">
+        Payments
+      </h2>
+      <!-- Azinel Wallet Card -->
+      <section
+        class="relative overflow-hidden rounded-[20px] bg-[#111111] p-8 mb-12 shadow-2xl border border-white/5"
+      >
+        <!-- Red Gradient Strip -->
+        <div
+          class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#E01F1F] via-[#B81010] to-[#E01F1F]"
+        ></div>
+        <div class="flex flex-col gap-1 mb-6">
+          <span
+            class="font-syne font-bold text-[10px] uppercase tracking-[0.2em] text-[#888888]"
+            >Azinel Wallet Balance</span
+          >
+          <div class="flex justify-between items-center">
+            <span
+              class="font-syne font-bold text-4xl text-white tracking-tighter"
+              >₦14,500.00</span
+            >
+            <button
+              class="bg-[#E01F1F] text-white font-syne font-bold py-2.5 px-6 rounded-full text-sm uppercase tracking-widest shadow-[0_6px_20px_rgba(224,31,31,0.4)] active:scale-95 transition-all"
+            >
+              Top Up
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-4 border-t border-white/5">
+          <span class="material-symbols-outlined text-[18px] text-[#E01F1F]"
+            >verified_user</span
+          >
+          <span class="text-[12px] text-[#888888] font-dm-sans"
+            >Securely encrypted by Azinel Core</span
+          >
+        </div>
+      </section>
+      <!-- PAYMENT METHODS Section -->
+      <section class="mb-12">
+        <h3
+          class="font-syne font-bold text-[12px] uppercase tracking-[0.25em] text-[#888888] mb-6"
+        >
+          Payment Methods
+        </h3>
+        <div class="space-y-4">
+          <!-- GT Bank Card -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#181818] rounded-[18px] hover:bg-[#222222] transition-colors group"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-8 bg-surface-container-highest rounded-md flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  alt="Card Brand"
+                  class="w-full h-full object-cover opacity-50"
+                  data-alt="Abstract minimalist representation of a credit card chip with sleek metallic textures"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOQvIpypcUrjmWY8n4XPIJzIKDYObc0Ib0zFlkwlWudd6nXousgKMcp2fHuFDs9FJ0zqmGZKt_gMCHuhXwRFsGxFgnioyHsslRsyGzOoI3krIfLle_7eolAb9KhAbvV-qLY0_DUPKg0K3VpSbQEF4pFasTWPPh_XrUumh8Nf5QYep2WIV1R-fa0Wjtf2zsTr0T5LLZV9h6zQj5sHYGTqT_nmMaR2pvOecEEEF1dCm5cKXB4DoPp3VwzgjMy3I0jgLdsBcJyJW3qVbC"
+                />
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">GT Bank Card</p>
+                <p class="text-[12px] text-[#888888]">**** 8842</p>
+              </div>
+            </div>
+            <span
+              class="material-symbols-outlined text-[#888888] group-hover:text-white transition-colors"
+              >chevron_right</span
+            >
+          </div>
+          <!-- Bank Transfer -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#181818] rounded-[18px] hover:bg-[#222222] transition-colors group"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[#E01F1F]"
+                  >account_balance</span
+                >
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">Bank Transfer</p>
+                <p class="text-[12px] text-[#888888]">Instant validation</p>
+              </div>
+            </div>
+            <span
+              class="material-symbols-outlined text-[#888888] group-hover:text-white transition-colors"
+              >chevron_right</span
+            >
+          </div>
+          <!-- USSD -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#181818] rounded-[18px] hover:bg-[#222222] transition-colors group"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[#E01F1F]"
+                  >dialpad</span
+                >
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">USSD</p>
+                <p class="text-[12px] text-[#888888]">Dial *737# to pay</p>
+              </div>
+            </div>
+            <span
+              class="material-symbols-outlined text-[#888888] group-hover:text-white transition-colors"
+              >chevron_right</span
+            >
+          </div>
+          <!-- Add Payment Method -->
+          <button
+            class="w-full flex items-center justify-center gap-2 p-5 border border-dashed border-white/10 rounded-[18px] hover:bg-white/5 transition-colors"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F] text-[20px]"
+              >add_circle</span
+            >
+            <span
+              class="font-syne font-bold text-[12px] uppercase tracking-widest text-white"
+              >+ Add Payment Method</span
+            >
+          </button>
+        </div>
+      </section>
+      <!-- RECENT TRANSACTIONS Section -->
+      <section class="mb-20">
+        <h3
+          class="font-syne font-bold text-[12px] uppercase tracking-[0.25em] text-[#888888] mb-6"
+        >
+          Recent Transactions
+        </h3>
+        <div class="space-y-1">
+          <!-- Transaction 1 -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#111111] hover:bg-[#181818] transition-colors"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[#888888]"
+                  >local_shipping</span
+                >
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">
+                  Lagos → Ibadan Express
+                </p>
+                <p class="text-[12px] text-[#888888]">
+                  Oct 24, 2023 • 09:14 AM
+                </p>
+              </div>
+            </div>
+            <span class="font-syne font-bold text-[#E01F1F]">-₦4,200.00</span>
+          </div>
+          <!-- Transaction 2 -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#111111] hover:bg-[#181818] transition-colors"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[#E01F1F]"
+                  >account_balance_wallet</span
+                >
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">Wallet Top-up</p>
+                <p class="text-[12px] text-[#888888]">
+                  Oct 22, 2023 • 14:20 PM
+                </p>
+              </div>
+            </div>
+            <span class="font-syne font-bold text-white">+₦10,000.00</span>
+          </div>
+          <!-- Transaction 3 -->
+          <div
+            class="flex items-center justify-between p-5 bg-[#111111] hover:bg-[#181818] transition-colors"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[#888888]"
+                  >local_shipping</span
+                >
+              </div>
+              <div>
+                <p class="font-dm-sans font-bold text-white">
+                  Abuja Intercity Premium
+                </p>
+                <p class="text-[12px] text-[#888888]">
+                  Oct 20, 2023 • 18:05 PM
+                </p>
+              </div>
+            </div>
+            <span class="font-syne font-bold text-[#E01F1F]">-₦8,500.00</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#111111]/90 backdrop-blur-2xl rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">home</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">route</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">local_shipping</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#E01F1F] scale-110 transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>
+
+<!-- Payments & Wallet -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Kinetic Noir</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#e01f1f",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-fixed": "#313030",
+              "tertiary-fixed-dim": "#474746",
+              "surface-bright": "#3a3939",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-fixed": "#410001",
+              "on-primary-container": "#fff7f6",
+              "on-tertiary-fixed-variant": "#e5e2e1",
+              "on-tertiary-fixed": "#ffffff",
+              "on-tertiary": "#ffffff",
+              error: "#ffb4ab",
+              "surface-container": "#201f1f",
+              "secondary-container": "#474746",
+              "inverse-on-surface": "#313030",
+              "surface-variant": "#353534",
+              background: "#0A0A0A",
+              "secondary-fixed": "#e5e2e1",
+              secondary: "#c8c6c5",
+              "on-error": "#690005",
+              "on-primary-fixed-variant": "#930008",
+              "surface-container-low": "#111111",
+              "surface-dim": "#0A0A0A",
+              "secondary-fixed-dim": "#c8c6c5",
+              "primary-fixed": "#ffdad5",
+              "on-surface": "#e5e2e1",
+              "on-secondary-container": "#b7b4b4",
+              outline: "#ad8883",
+              "on-secondary": "#313030",
+              "inverse-primary": "#c0000f",
+              "on-background": "#e5e2e1",
+              "surface-tint": "#ffb4aa",
+              "outline-variant": "#5d3f3c",
+              "primary-fixed-dim": "#ffb4aa",
+              "tertiary-container": "#201f1f",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary": "#690004",
+              "surface-container-highest": "#181818",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-container": "#ffffff",
+              primary: "#E01F1F",
+              "surface-container-high": "#222222",
+              surface: "#0A0A0A",
+              "on-secondary-fixed-variant": "#474746",
+              tertiary: "#e5e2e1",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .kinetic-gradient {
+        background: linear-gradient(135deg, #e01f1f 0%, #b81010 100%);
+      }
+      .dot-grid {
+        background-image: radial-gradient(#e01f1f 1px, transparent 1px);
+        background-size: 24px 24px;
+        opacity: 0.15;
+      }
+      .red-glow-bloom {
+        background: radial-gradient(
+          circle at center,
+          rgba(224, 31, 31, 0.25) 0%,
+          rgba(10, 10, 10, 0) 70%
+        );
+      }
+      .active-glow {
+        filter: drop-shadow(0 0 8px rgba(224, 31, 31, 0.6));
+      }
+      .cta-shadow {
+        box-shadow: 0 6px 20px rgba(224, 31, 31, 0.4);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+        background-color: #0a0a0a;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-on-surface font-dm-sans selection:bg-primary/30 antialiased overflow-hidden"
+  >
+    <!-- Screen Container (Focused Transactional/Onboarding: No Nav Shell) -->
+    <main
+      class="relative min-h-screen flex flex-col items-center justify-between px-8 py-12 overflow-hidden bg-[#0A0A0A]"
+    >
+      <!-- Dynamic Island / Notch Element -->
+      <div
+        class="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-black rounded-full z-50 flex items-center justify-center border border-white/5"
+      >
+        <div class="w-1.5 h-1.5 rounded-full bg-white/20 mr-2"></div>
+        <div class="w-8 h-1 bg-white/10 rounded-full"></div>
+      </div>
+      <!-- Header Section -->
+      <header class="w-full flex flex-col items-center mt-12 z-10">
+        <h1
+          class="font-syne font-extrabold text-5xl tracking-tighter text-white mb-2"
+        >
+          AZ<span class="text-primary-container">I</span>NEL
+        </h1>
+        <p
+          class="font-dm-sans text-[10px] uppercase tracking-[0.3em] text-secondary/60 font-bold"
+        >
+          Move People. Move Cargo.
+        </p>
+      </header>
+      <!-- Visual Hero Section (Red Bloom Background) -->
+      <div
+        class="relative w-full max-w-sm aspect-[4/5] flex items-center justify-center"
+      >
+        <!-- Radial Red Bloom behind map - Purely Red -->
+        <div
+          class="absolute inset-0 red-glow-bloom scale-150 pointer-events-none"
+        ></div>
+        <!-- Map Card -->
+        <div
+          class="relative w-full h-full bg-surface-container-low rounded-[32px] overflow-hidden border border-white/[0.07] flex flex-col"
+        >
+          <!-- Dot Grid Overlay -->
+          <div class="absolute inset-0 dot-grid"></div>
+          <!-- Map Content (Conceptual Layout) -->
+          <div class="relative flex-1 p-8 flex flex-col justify-center">
+            <!-- Lagos Node -->
+            <div
+              class="absolute left-10 top-1/2 -translate-y-1/2 flex flex-col items-center"
+            >
+              <div
+                class="w-3 h-3 bg-white rounded-full ring-4 ring-white/10"
+              ></div>
+              <span
+                class="mt-2 font-syne text-[10px] font-bold text-white/40 uppercase tracking-widest"
+                >Lagos</span
+              >
+            </div>
+            <!-- Abuja Node -->
+            <div class="absolute right-10 top-1/3 flex flex-col items-center">
+              <!-- Pulsing Destination Dot (Red) -->
+              <div class="relative">
+                <div
+                  class="absolute inset-0 bg-primary-container rounded-full animate-ping opacity-75"
+                ></div>
+                <div
+                  class="relative w-4 h-4 bg-primary-container rounded-full active-glow shadow-[0_0_15px_#E01F1F]"
+                ></div>
+              </div>
+              <span
+                class="mt-2 font-syne text-[10px] font-bold text-primary-container uppercase tracking-widest"
+                >Abuja</span
+              >
+            </div>
+            <!-- Route Line -->
+            <svg
+              class="absolute inset-0 w-full h-full pointer-events-none"
+              viewbox="0 0 400 500"
+            >
+              <path
+                class="opacity-60"
+                d="M 100 250 Q 200 200 300 166"
+                fill="none"
+                stroke="#E01F1F"
+                stroke-dasharray="8 8"
+                stroke-linecap="round"
+                stroke-width="3"
+              ></path>
+            </svg>
+            <!-- Route Progress Indicator -->
+            <div class="absolute left-[180px] top-[210px] rotate-[-15deg]">
+              <span
+                class="material-symbols-outlined text-primary-container text-2xl active-glow"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+              >
+                local_shipping
+              </span>
+            </div>
+          </div>
+          <!-- Card Footer Info -->
+          <div
+            class="p-6 bg-white/[0.02] backdrop-blur-md border-t border-white/[0.05]"
+          >
+            <div class="flex justify-between items-center">
+              <div>
+                <p
+                  class="text-[10px] text-secondary font-bold uppercase tracking-tight"
+                >
+                  Active Route
+                </p>
+                <p class="text-white font-syne font-bold">Intercity Express</p>
+              </div>
+              <div class="text-right">
+                <p
+                  class="text-[10px] text-secondary font-bold uppercase tracking-tight"
+                >
+                  ETA
+                </p>
+                <p class="text-primary-container font-syne font-bold">
+                  04:45:00
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom CTA Section -->
+      <footer class="w-full max-w-sm flex flex-col items-center gap-6 z-10">
+        <button
+          class="w-full kinetic-gradient py-5 rounded-[14px] cta-shadow group active:scale-95 transition-all duration-200"
+        >
+          <span
+            class="font-syne font-bold text-white text-lg tracking-tight flex items-center justify-center gap-2"
+          >
+            Get Started
+            <span
+              class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform"
+              >arrow_forward</span
+            >
+          </span>
+        </button>
+        <p class="font-dm-sans text-sm text-secondary/80">
+          Already have an account?
+          <a
+            class="text-primary-container font-bold hover:underline ml-1"
+            href="#"
+            >Sign In</a
+          >
+        </p>
+      </footer>
+      <!-- Background Atmospheric Texture (Filtered to neutral) -->
+      <div
+        class="absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-overlay"
+        style="
+          background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAtGe7rZ1HVDqlp68DBe19fO3tDKsXdbFQtTpq73Etgt1gSaajJxixjpYNHy2_7k47AYiOYrPsS2pR8UdAyzFz8tEW0Tql-KJ6zAjeM9f9hzHWe9LVUkm8Kft_jsewYN43ik4TQcvdtn3_e-kRiSvjQnUX3LZAbTb_-8SfqB0oMELo-HPgifmwMx8CdlGsjkOOA8fHE1je7UnnHgxij9piUCvw7PJIWpEQ-ZJLCT5CnU3Kl44G03--9XqxSjmJqKhzZjcYsFQak_Cn2&quot;);
+          filter: grayscale(100%);
+        "
+      ></div>
+    </main>
+    <!-- Invisible Image Metadata for Prompt Engineering -->
+    <div class="hidden">
+      <img
+        data-alt="close-up of a high-tech digital map with glowing red points and connections on a dark textured background architectural lighting"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbNvjJwsJnoNWx3iDwKBzCp3LGyaumMQSenyLAw6fGQYRMBaBWBjBW9JgkMB0Pmh5gRi1Z78H9M7DpWLhdP53I_PIksabHYyaAoa6enF52akvo08KnUDPd1Y9WhgXzc01F6xn_Kyn1Tn-P92M6bY5GdTbNz1UhhOhOdfsR7kGYCATXRmjmSC6ZLprUbs80oWNKvdgbmM8N_nZqwDuql3iFj_M_6emLh5ToCeNaSa169LTrAMFDCXW4wP4MR04vKzDxDavD-OULe-wu"
+      />
+    </div>
+  </body>
+</html>
+
+<!-- Splash / Onboarding (True Noir) -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Track Shipment</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#0077bf",
+              "on-primary-container": "#fff7f6",
+              "secondary-fixed-dim": "#c8c6c5",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#474746",
+              "primary-fixed": "#ffdad5",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "on-secondary-fixed-variant": "#474746",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d0e4ff",
+              "surface-variant": "#353534",
+              error: "#ffb4ab",
+              "outline-variant": "#5d3f3c",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#9acbff",
+              "inverse-primary": "#c0000f",
+              "on-secondary-fixed": "#1c1b1b",
+              outline: "#ad8883",
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "primary-container": "#e01f1f",
+              "surface-tint": "#ffb4aa",
+              "on-tertiary": "#003355",
+              primary: "#ffb4aa",
+              "error-container": "#93000a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#930008",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary": "#313030",
+              tertiary: "#9acbff",
+              "surface-dim": "#131313",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#410001",
+              "on-primary": "#690004",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001d34",
+              background: "#131313",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-fixed-variant": "#004a79",
+              surface: "#131313",
+              "on-secondary-container": "#b7b4b4",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk"],
+              body: ["Manrope"],
+              label: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .pulse-red {
+        box-shadow: 0 0 0 0 rgba(224, 31, 31, 0.7);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(224, 31, 31, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgba(224, 31, 31, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(224, 31, 31, 0);
+        }
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-on-surface font-dm-sans selection:bg-primary-container selection:text-white pb-32"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#0A0A0A]/80 backdrop-blur-xl z-50 shadow-[0_6px_20px_rgba(224,31,31,0.2)]"
+    >
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-[#E01F1F]">menu</span>
+        <h1
+          class="text-2xl font-syne font-black tracking-tighter text-[#E01F1F] italic uppercase"
+        >
+          AZINEL
+        </h1>
+      </div>
+      <div
+        class="w-10 h-10 rounded-full border-2 border-[#E01F1F]/20 overflow-hidden"
+      >
+        <img
+          alt="User Avatar"
+          class="w-full h-full object-cover"
+          data-alt="close-up portrait of a professional man in a suit with a neutral background and high-end studio lighting"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuADVMJIL0RdhMeZ7E4FVNIsbBaraRMTeEiJeBWoKpzKLuSfJJMwBSNjNp5F6VUjnWYmIqVTO_aUIDc69D_IkHYuBSc-Rc_Xy3Q9e1U5krsFuNPMUPhMGCsKPJqFEMOCerEAfysYG4FhVc1S17x7DfO5X3vzVB_LkEu20KksfbJlT7R0zoioiyZcirghDlghJlGjvQDInc9relaP1x4u1Ytzvurbxn-20JHehxscbbNYl1VBVgQz7G8iH4RuvUZ9VyTxBGGTleSVQ5x1"
+        />
+      </div>
+    </header>
+    <main class="mt-24 px-6 max-w-2xl mx-auto space-y-8">
+      <!-- Search Section -->
+      <section class="space-y-6">
+        <h2
+          class="text-4xl font-syne font-extrabold tracking-tighter text-white uppercase italic"
+        >
+          Track Shipment
+        </h2>
+        <div class="relative group">
+          <input
+            class="w-full bg-[#181818] border border-white/5 rounded-2xl px-6 py-5 text-white font-syne font-bold placeholder:text-[#888888] focus:outline-none focus:border-[#E01F1F] transition-all tracking-widest text-sm"
+            placeholder="ENTER TRACKING NUMBER"
+            type="text"
+          />
+          <div
+            class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3"
+          >
+            <span
+              class="material-symbols-outlined text-[#E01F1F] cursor-pointer"
+              >barcode_scanner</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Timeline Card -->
+      <div
+        class="bg-[#111111] rounded-[24px] p-8 shadow-2xl relative overflow-hidden border border-white/[0.03]"
+      >
+        <div class="flex justify-between items-start mb-8">
+          <div>
+            <p
+              class="font-syne font-bold text-[10px] text-[#888888] uppercase tracking-widest mb-1"
+            >
+              Current Status
+            </p>
+            <h3
+              class="text-2xl font-syne font-extrabold text-[#E01F1F] italic uppercase tracking-tighter"
+            >
+              In Transit
+            </h3>
+          </div>
+          <div class="text-right">
+            <p
+              class="font-syne font-bold text-[10px] text-[#888888] uppercase tracking-widest mb-1"
+            >
+              Est. Arrival
+            </p>
+            <p class="font-syne font-extrabold text-white">4:00 PM</p>
+          </div>
+        </div>
+        <!-- Vertical Timeline -->
+        <div class="relative space-y-10 pl-4">
+          <!-- Dotted Line Background -->
+          <div
+            class="absolute left-[23px] top-4 bottom-4 w-[2px] border-l-2 border-dotted border-[#E01F1F]/30"
+          ></div>
+          <!-- Step 1: Picked Up -->
+          <div class="relative flex items-start gap-6 group">
+            <div class="z-10 bg-[#111111] py-1">
+              <div
+                class="w-5 h-5 rounded-full bg-[#E01F1F] flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-[12px] text-white font-bold"
+                  >check</span
+                >
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h4
+                  class="font-syne font-bold text-white text-sm uppercase tracking-wider"
+                >
+                  Package Picked Up
+                </h4>
+                <span class="text-[10px] font-dm-sans text-[#888888]"
+                  >8:00 AM</span
+                >
+              </div>
+              <p class="text-xs text-[#888888] font-dm-sans">
+                Port Harcourt, Nigeria
+              </p>
+            </div>
+          </div>
+          <!-- Step 2: In Transit -->
+          <div class="relative flex items-start gap-6 group">
+            <div class="z-10 bg-[#111111] py-1">
+              <div
+                class="w-5 h-5 rounded-full bg-[#E01F1F] flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-[12px] text-white font-bold"
+                  >check</span
+                >
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h4
+                  class="font-syne font-bold text-white text-sm uppercase tracking-wider"
+                >
+                  In Transit
+                </h4>
+                <span class="text-[10px] font-dm-sans text-[#888888]"
+                  >11:30 AM</span
+                >
+              </div>
+              <p class="text-xs text-[#888888] font-dm-sans">
+                Enugu Logistics Hub
+              </p>
+            </div>
+          </div>
+          <!-- Step 3: On the Way (Active) -->
+          <div class="relative flex items-start gap-6 group">
+            <div class="z-10 bg-[#111111] py-1">
+              <div class="w-5 h-5 rounded-full bg-[#E01F1F] pulse-red"></div>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h4
+                  class="font-syne font-bold text-[#E01F1F] text-sm uppercase tracking-wider"
+                >
+                  On the Way
+                </h4>
+                <span class="text-[10px] font-dm-sans text-[#E01F1F]"
+                  >Expected 4:00 PM</span
+                >
+              </div>
+              <p class="text-xs text-[#BBBBBB] font-dm-sans">
+                Heading towards Lagos Main Terminal
+              </p>
+            </div>
+          </div>
+          <!-- Step 4: Delivered -->
+          <div class="relative flex items-start gap-6 group opacity-40">
+            <div class="z-10 bg-[#111111] py-1">
+              <div class="w-5 h-5 rounded-full border-2 border-[#888888]"></div>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h4
+                  class="font-syne font-bold text-[#888888] text-sm uppercase tracking-wider"
+                >
+                  Delivered
+                </h4>
+                <span class="text-[10px] font-dm-sans text-[#888888]"
+                  >Tomorrow</span
+                >
+              </div>
+              <p class="text-xs text-[#888888] font-dm-sans">Lagos, Nigeria</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Courier Card -->
+      <div
+        class="bg-[#181818] rounded-[24px] p-6 flex items-center justify-between shadow-xl border border-white/[0.03]"
+      >
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden bg-[#222222]">
+            <img
+              alt="Driver"
+              class="w-full h-full object-cover"
+              data-alt="professional portrait of a delivery driver wearing a clean uniform with a friendly expression and high contrast lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-eC-IsChjaxl2V9j1kqEoFDdfoMKgCyjWd9JjuefHqWgd3pnWCFKWF1UzHzEYLhOTF1oTi6kxKQkyEmk8Y_F7ZA8D5nKUj0o6A-PW0JBa-1kgQPSUyifWlue5OHsC8QfBcfp-qad2RPPjOGM4NbD2RQ2ttsVe0YtbReYKzFHq1aYm2lD1CCi5Iw-N7h_Kr9Jkafydfsiuy4wPTMHoBmlMPwYLr3vThbfCDYYAhYwnZUxQnbmt8GSYcwPlLxGF8aWWd4Hp45FRMj0K"
+            />
+          </div>
+          <div>
+            <h4
+              class="font-syne font-bold text-white text-sm uppercase tracking-widest"
+            >
+              Akinola Moses
+            </h4>
+            <p class="text-xs font-dm-sans text-[#888888]">
+              Lead Logistics Expert
+            </p>
+          </div>
+        </div>
+        <button
+          class="bg-[#E01F1F] hover:bg-[#B81010] text-white px-6 py-3 rounded-xl font-syne font-bold text-xs uppercase tracking-widest transition-all shadow-[0_6px_20px_rgba(224,31,31,0.4)] active:scale-95"
+        >
+          Call Driver
+        </button>
+      </div>
+      <!-- Map Preview Card -->
+      <div
+        class="bg-[#111111] rounded-[24px] p-2 h-48 relative overflow-hidden shadow-2xl group border border-white/[0.03]"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center grayscale contrast-125 opacity-60 group-hover:scale-110 transition-transform duration-700"
+          data-alt="stylized satellite map view of an urban landscape with glowing red transportation lines on a dark dark background"
+          data-location="Lagos"
+          style="
+            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBdNGmgCrPhiBStI-sBBvCMMHeBdntm0cJw2NvSo97v0wU8pitlaC7n7ssY3-bVen7IfGXewxXdEABS706FyoOj7U0Ya6Y3yH_nvVcyYpBoHx_u3Mx7bwfPf3tjiDT5KTrFdp1alZAtrKCXVXv_xwM637ACKCXtgbmpEgWSFvqLepVHNP15vEgGBXdYzV7GLb0YAZCu1jFulJQLjhBGJM_mpkuhQinAS3EgInlJ5dBrRdY7jn542qJ2acXV9BArcouuJ_beOJkOSFb7&quot;);
+          "
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent"
+        ></div>
+        <div
+          class="absolute bottom-4 left-6 right-6 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-2">
+            <span
+              class="w-2 h-2 rounded-full bg-[#E01F1F] animate-pulse"
+            ></span>
+            <span
+              class="font-syne font-bold text-[10px] text-white uppercase tracking-widest"
+              >Live Location Tracked</span
+            >
+          </div>
+          <button
+            class="text-[10px] font-syne font-bold text-[#E01F1F] uppercase tracking-widest underline underline-offset-4"
+          >
+            Expand Map
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#111111]/90 backdrop-blur-2xl rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.5)]"
+    >
+      <div
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+      >
+        <span class="material-symbols-outlined" data-icon="home">home</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-[#E01F1F] scale-110"
+      >
+        <span class="material-symbols-outlined" data-icon="route">route</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+      >
+        <span class="material-symbols-outlined" data-icon="local_shipping"
+          >local_shipping</span
+        >
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </div>
+    </nav>
+  </body>
+</html>
+
+<!-- Shipment Tracking -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Create Account</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#e01f1f",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-fixed": "#d0e4ff",
+              "tertiary-fixed-dim": "#9acbff",
+              "surface-bright": "#3a3939",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-fixed": "#410001",
+              "on-primary-container": "#fff7f6",
+              "on-tertiary-fixed-variant": "#004a79",
+              "on-tertiary-fixed": "#001d34",
+              "on-tertiary": "#003355",
+              error: "#ffb4ab",
+              "surface-container": "#201f1f",
+              "secondary-container": "#474746",
+              "inverse-on-surface": "#313030",
+              "surface-variant": "#353534",
+              background: "#0A0A0A",
+              "secondary-fixed": "#e5e2e1",
+              secondary: "#c8c6c5",
+              "on-error": "#690005",
+              "on-primary-fixed-variant": "#930008",
+              "surface-container-low": "#111111",
+              "surface-dim": "#0A0A0A",
+              "secondary-fixed-dim": "#c8c6c5",
+              "primary-fixed": "#ffdad5",
+              "on-surface": "#e5e2e1",
+              "on-secondary-container": "#b7b4b4",
+              outline: "#ad8883",
+              "on-secondary": "#313030",
+              "inverse-primary": "#c0000f",
+              "on-background": "#e5e2e1",
+              "surface-tint": "#ffb4aa",
+              "outline-variant": "#5d3f3c",
+              "primary-fixed-dim": "#ffb4aa",
+              "tertiary-container": "#0077bf",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary": "#690004",
+              "surface-container-highest": "#181818",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-container": "#f7f9ff",
+              primary: "#E01F1F",
+              "surface-container-high": "#222222",
+              surface: "#0A0A0A",
+              "on-secondary-fixed-variant": "#474746",
+              tertiary: "#9acbff",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .kinetic-shadow {
+        box-shadow: 0 6px 20px rgba(224, 31, 31, 0.4);
+      }
+      .ghost-border {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .input-focus-glow:focus-within {
+        border-color: #e01f1f;
+        box-shadow: 0 0 8px rgba(224, 31, 31, 0.3);
+      }
+      /* Custom Checkbox Style */
+      .custom-checkbox:checked {
+        background-color: #e01f1f;
+        border-color: #e01f1f;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body min-h-screen flex flex-col"
+  >
+    <!-- Top Navigation Anchor (Manual Filter: Suppress Nav Shell for Transactional Screen) -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-xl px-6 py-4 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-4">
+        <button
+          class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors active:scale-95 duration-200"
+        >
+          <span class="material-symbols-outlined text-on-surface"
+            >arrow_back</span
+          >
+        </button>
+        <span
+          class="font-syne font-black text-xl tracking-tighter text-[#E01F1F]"
+          >AZINEL</span
+        >
+      </div>
+      <div class="w-10"></div>
+      <!-- Spacer for balance -->
+    </header>
+    <!-- Main Registration Canvas -->
+    <main class="flex-grow pt-24 pb-12 px-6 max-w-md mx-auto w-full">
+      <!-- Editorial Header Section -->
+      <section class="mb-10 mt-4">
+        <h1
+          class="font-syne font-bold text-[28px] leading-tight tracking-tight text-white mb-2"
+        >
+          Create Account
+        </h1>
+        <p class="font-dm-sans text-[#888888] text-base">
+          Join thousands of Nigerians moving smarter.
+        </p>
+      </section>
+      <!-- Form Section -->
+      <form class="space-y-5">
+        <!-- Full Name -->
+        <div class="space-y-1.5">
+          <div
+            class="relative flex items-center bg-[#181818] ghost-border rounded-[14px] px-4 h-[56px] transition-all input-focus-glow"
+          >
+            <span class="material-symbols-outlined text-[#888888] mr-3"
+              >person</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-dm-sans placeholder:text-[#888888]"
+              placeholder="Full Name"
+              type="text"
+            />
+          </div>
+        </div>
+        <!-- Phone Number -->
+        <div class="space-y-1.5">
+          <div
+            class="relative flex items-center bg-[#181818] ghost-border rounded-[14px] px-4 h-[56px] transition-all input-focus-glow"
+          >
+            <span class="material-symbols-outlined text-[#888888] mr-3"
+              >phone</span
+            >
+            <div
+              class="flex items-center gap-2 mr-3 pr-3 border-r border-white/10"
+            >
+              <span class="text-on-surface font-dm-sans font-medium text-sm"
+                >+234</span
+              >
+            </div>
+            <input
+              class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-dm-sans placeholder:text-[#888888]"
+              placeholder="Phone Number"
+              type="tel"
+            />
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="space-y-1.5">
+          <div
+            class="relative flex items-center bg-[#181818] ghost-border rounded-[14px] px-4 h-[56px] transition-all input-focus-glow"
+          >
+            <span class="material-symbols-outlined text-[#888888] mr-3"
+              >mail</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-dm-sans placeholder:text-[#888888]"
+              placeholder="Email Address"
+              type="email"
+            />
+          </div>
+        </div>
+        <!-- Password -->
+        <div class="space-y-1.5">
+          <div
+            class="relative flex items-center bg-[#181818] ghost-border rounded-[14px] px-4 h-[56px] transition-all input-focus-glow"
+          >
+            <span class="material-symbols-outlined text-[#888888] mr-3"
+              >lock</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-dm-sans placeholder:text-[#888888]"
+              placeholder="Password"
+              type="password"
+            />
+            <span
+              class="material-symbols-outlined text-[#888888] ml-2 cursor-pointer"
+              >visibility_off</span
+            >
+          </div>
+        </div>
+        <!-- Confirm Password -->
+        <div class="space-y-1.5">
+          <div
+            class="relative flex items-center bg-[#181818] ghost-border rounded-[14px] px-4 h-[56px] transition-all input-focus-glow"
+          >
+            <span class="material-symbols-outlined text-[#888888] mr-3"
+              >lock</span
+            >
+            <input
+              class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-dm-sans placeholder:text-[#888888]"
+              placeholder="Confirm Password"
+              type="password"
+            />
+          </div>
+        </div>
+        <!-- Terms Checkbox -->
+        <div class="flex items-start gap-3 pt-2">
+          <div class="relative flex items-center">
+            <input
+              class="custom-checkbox w-5 h-5 rounded-md border-white/10 bg-surface-container-high text-primary focus:ring-primary focus:ring-offset-background transition-all cursor-pointer"
+              id="terms"
+              type="checkbox"
+            />
+          </div>
+          <label
+            class="text-sm font-dm-sans text-[#BBBBBB] leading-snug cursor-pointer"
+            for="terms"
+          >
+            I agree to Azinel's
+            <span class="text-[#E01F1F] hover:underline">Terms</span> &amp;
+            <span class="text-[#E01F1F] hover:underline">Privacy Policy</span>
+          </label>
+        </div>
+        <!-- Primary CTA -->
+        <div class="pt-4">
+          <button
+            class="w-full h-[56px] bg-gradient-to-r from-[#E01F1F] to-[#B81010] text-white font-syne font-bold rounded-[14px] kinetic-shadow active:scale-95 transition-all duration-200 uppercase tracking-wider text-sm"
+            type="submit"
+          >
+            Create Account
+          </button>
+        </div>
+      </form>
+      <!-- Secondary Journey -->
+      <div class="mt-8 text-center">
+        <p class="font-dm-sans text-[#888888] text-sm">
+          Already registered?
+          <a class="text-[#E01F1F] font-bold ml-1 hover:underline" href="#"
+            >Log In</a
+          >
+        </p>
+      </div>
+      <!-- Social Sign In - Asymmetric Positioning -->
+      <section class="mt-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-[1px] flex-grow bg-white/5"></div>
+          <span
+            class="text-[10px] font-syne font-bold uppercase tracking-[0.2em] text-[#888888]"
+            >Or Join With</span
+          >
+          <div class="h-[1px] flex-grow bg-white/5"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <button
+            class="flex items-center justify-center gap-3 h-[52px] ghost-border rounded-[14px] bg-[#111111] hover:bg-[#181818] transition-colors active:scale-95 duration-200"
+          >
+            <img
+              alt="Google"
+              class="w-5 h-5 grayscale opacity-80"
+              data-alt="minimalist google logo in monochrome gray tone for high-end dark interface"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL8P9_ZxtSizUCIprOjPeiQmWeziV1Zc4J84yG2915J0WqzjgSoHtoBxnOBL9iXoQRk1e2jiGBscPlGel7RQ_Bmf6NNQM1yQgTOOJaCpE2jH6V0q268zOnHloFn2wlNgRQ7w0TD7OGRSO275eZkPw5M73wmeJBmykIQ4d-01x5U9RtCBG6hqs-5JclygB4QrPdR0zcqBkjaEXs5MIPv0Ov2bVzofaX2OzgJa2YCDqRk4LxIBXhEHq9y-JquAvExRlVSvmqQSHI_Ykf"
+            />
+            <span class="font-dm-sans font-medium text-sm text-[#BBBBBB]"
+              >Google</span
+            >
+          </button>
+          <button
+            class="flex items-center justify-center gap-3 h-[52px] ghost-border rounded-[14px] bg-[#111111] hover:bg-[#181818] transition-colors active:scale-95 duration-200"
+          >
+            <span
+              class="material-symbols-outlined text-white text-xl"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >ios</span
+            >
+            <span class="font-dm-sans font-medium text-sm text-[#BBBBBB]"
+              >Apple</span
+            >
+          </button>
+        </div>
+      </section>
+      <!-- Kinetic Noir Background Detail (Subtle Glow) -->
+      <div
+        class="fixed -bottom-40 -left-40 w-80 h-80 bg-[#E01F1F]/5 rounded-full blur-[100px] pointer-events-none"
+      ></div>
+    </main>
+    <!-- Footer Space for Safe Area -->
+    <footer class="h-8 w-full bg-background"></footer>
+  </body>
+</html>
+
+<!-- Sign Up / Registration -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel - My Trips</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#0077bf",
+              "on-primary-container": "#fff7f6",
+              "secondary-fixed-dim": "#c8c6c5",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#474746",
+              "primary-fixed": "#ffdad5",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "on-secondary-fixed-variant": "#474746",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d0e4ff",
+              "surface-variant": "#353534",
+              error: "#ffb4ab",
+              "outline-variant": "#5d3f3c",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#9acbff",
+              "inverse-primary": "#c0000f",
+              "on-secondary-fixed": "#1c1b1b",
+              outline: "#ad8883",
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "primary-container": "#e01f1f",
+              "surface-tint": "#ffb4aa",
+              "on-tertiary": "#003355",
+              primary: "#ffb4aa",
+              "error-container": "#93000a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#930008",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary": "#313030",
+              tertiary: "#9acbff",
+              "surface-dim": "#131313",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#410001",
+              "on-primary": "#690004",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001d34",
+              background: "#131313",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-fixed-variant": "#004a79",
+              surface: "#131313",
+              "on-secondary-container": "#b7b4b4",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .font-syne {
+        font-family: "Syne", sans-serif;
+      }
+      .font-dm-sans {
+        font-family: "DM Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #0a0a0a;
+        color: #e5e2e1;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .active-tab-line {
+        height: 3px;
+        width: 24px;
+        background-color: #e01f1f;
+        margin-top: 4px;
+        border-radius: 99px;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-[#0A0A0A] font-body">
+    <!-- Top Navigation Anchor -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#0A0A0A]/80 backdrop-blur-xl shadow-[0_6px_20px_rgba(224,31,31,0.2)]"
+    >
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-[#E01F1F]">menu</span>
+        <h1
+          class="text-2xl font-syne font-black tracking-tighter text-[#E01F1F] italic uppercase"
+        >
+          AZINEL
+        </h1>
+      </div>
+      <div
+        class="w-10 h-10 rounded-full border border-white/10 overflow-hidden"
+      >
+        <img
+          alt="Profile"
+          class="w-full h-full object-cover"
+          data-alt="Close up portrait of a stylish man with a clean haircut looking confidently at the camera, professional lighting, dark aesthetic background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3tAEEoXOuqdqj542EU-5nIsymQgFUJMJ5lclY_Ts2e5ygyfkDoBtz_9ugZK3hw5xK-IvDV_RxUz3f80rX3tJOfSL6UmUdnJlEn-aGkQvQD7YL-5pHsE4ZiA4IxYgGhlOMfWr2lEyEEjzr5c4MMIBR2MWV0qOz6pfYsrgJwWhponFzgab3pO7YCmqUfAk8cR_914wEnSQ_HJFTqa53auZU1ariCNviOpyoQIC6txkuXM--jCQ0Kse1V_jLX4ThOciRo1uEWj2iWTp3"
+        />
+      </div>
+    </header>
+    <main class="pt-24 pb-32 px-6">
+      <!-- Header Section -->
+      <div class="flex justify-between items-end mb-8">
+        <h2
+          class="text-4xl font-syne font-bold tracking-tight text-white leading-none"
+        >
+          My Trips
+        </h2>
+        <button
+          class="w-12 h-12 flex items-center justify-center rounded-2xl bg-[#181818] border border-white/5 text-[#E01F1F] active:scale-95 transition-transform duration-200"
+        >
+          <span class="material-symbols-outlined">filter_list</span>
+        </button>
+      </div>
+      <!-- Horizontal Tab Row -->
+      <div
+        class="flex gap-8 mb-8 overflow-x-auto hide-scrollbar border-b border-white/5"
+      >
+        <div class="flex flex-col items-center">
+          <button
+            class="text-white font-syne font-bold uppercase tracking-widest text-xs pb-2"
+          >
+            All
+          </button>
+          <div class="active-tab-line"></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <button
+            class="text-[#888888] font-syne font-bold uppercase tracking-widest text-xs pb-2 hover:text-white transition-colors"
+          >
+            Rides
+          </button>
+          <div class="h-[3px] w-6 mt-1 opacity-0"></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <button
+            class="text-[#888888] font-syne font-bold uppercase tracking-widest text-xs pb-2 hover:text-white transition-colors"
+          >
+            Shipments
+          </button>
+          <div class="h-[3px] w-6 mt-1 opacity-0"></div>
+        </div>
+      </div>
+      <!-- Scrollable List of Trip History Cards -->
+      <div class="space-y-4">
+        <!-- Trip Card: Completed Shipment -->
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex items-center gap-4 transition-all duration-300 hover:bg-[#181818] group"
+        >
+          <div
+            class="w-14 h-14 rounded-full bg-[#E01F1F]/10 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F]"
+              >local_shipping</span
+            >
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-syne font-bold text-lg text-white group-hover:text-[#E01F1F] transition-colors"
+            >
+              PHC → Lagos
+            </h3>
+            <p class="font-dm-sans text-sm text-[#888888]">Oct 12 • 09:30 AM</p>
+          </div>
+          <div class="text-right flex flex-col items-end gap-1">
+            <span class="font-syne font-bold text-white text-lg">₦145,000</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surface-container-highest text-[#BBBBBB] text-[10px] font-bold uppercase tracking-tighter"
+              >Completed</span
+            >
+          </div>
+        </div>
+        <!-- Trip Card: Completed Ride -->
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex items-center gap-4 transition-all duration-300 hover:bg-[#181818] group"
+        >
+          <div
+            class="w-14 h-14 rounded-full bg-[#E01F1F]/10 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F]">route</span>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-syne font-bold text-lg text-white group-hover:text-[#E01F1F] transition-colors"
+            >
+              Ikeja → Lekki
+            </h3>
+            <p class="font-dm-sans text-sm text-[#888888]">Oct 10 • 06:15 PM</p>
+          </div>
+          <div class="text-right flex flex-col items-end gap-1">
+            <span class="font-syne font-bold text-white text-lg">₦12,400</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surface-container-highest text-[#BBBBBB] text-[10px] font-bold uppercase tracking-tighter"
+              >Completed</span
+            >
+          </div>
+        </div>
+        <!-- Trip Card: Cancelled -->
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex items-center gap-4 transition-all duration-300 hover:bg-[#181818] group"
+        >
+          <div
+            class="w-14 h-14 rounded-full bg-[#181818] flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-[#888888]">person</span>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-syne font-bold text-lg text-white group-hover:text-[#E01F1F] transition-colors"
+            >
+              Abuja → PHC
+            </h3>
+            <p class="font-dm-sans text-sm text-[#888888]">Oct 08 • 11:00 AM</p>
+          </div>
+          <div class="text-right flex flex-col items-end gap-1">
+            <span class="font-syne font-bold text-[#888888] text-lg">₦0</span>
+            <span
+              class="px-3 py-1 rounded-full bg-[#E01F1F]/20 text-[#E01F1F] text-[10px] font-bold uppercase tracking-tighter"
+              >Cancelled</span
+            >
+          </div>
+        </div>
+        <!-- Trip Card: Upcoming -->
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex items-center gap-4 transition-all duration-300 hover:bg-[#181818] group relative overflow-hidden border border-[#E01F1F]/10"
+        >
+          <div
+            class="absolute top-0 right-0 w-12 h-12 bg-[#E01F1F]/5 rounded-bl-[40px]"
+          ></div>
+          <div
+            class="w-14 h-14 rounded-full bg-[#E01F1F] flex items-center justify-center shadow-[0_4px_15px_rgba(224,31,31,0.4)]"
+          >
+            <span
+              class="material-symbols-outlined text-white"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >local_shipping</span
+            >
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-syne font-bold text-lg text-white group-hover:text-[#E01F1F] transition-colors"
+            >
+              Ibadan → Lagos
+            </h3>
+            <p class="font-dm-sans text-sm text-[#E01F1F]">Starts in 2h 15m</p>
+          </div>
+          <div class="text-right flex flex-col items-end gap-1">
+            <span class="font-syne font-bold text-white text-lg">₦68,200</span>
+            <span
+              class="px-3 py-1 rounded-full bg-[#E01F1F]/20 text-[#E01F1F] text-[10px] font-bold uppercase tracking-tighter animate-pulse"
+              >Upcoming</span
+            >
+          </div>
+        </div>
+        <!-- Trip Card: Past Shipment -->
+        <div
+          class="bg-[#111111] p-5 rounded-[20px] flex items-center gap-4 transition-all duration-300 hover:bg-[#181818] group"
+        >
+          <div
+            class="w-14 h-14 rounded-full bg-[#E01F1F]/10 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F]"
+              >local_shipping</span
+            >
+          </div>
+          <div class="flex-1">
+            <h3
+              class="font-syne font-bold text-lg text-white group-hover:text-[#E01F1F] transition-colors"
+            >
+              Kano → Abuja
+            </h3>
+            <p class="font-dm-sans text-sm text-[#888888]">Sep 29 • 02:45 PM</p>
+          </div>
+          <div class="text-right flex flex-col items-end gap-1">
+            <span class="font-syne font-bold text-white text-lg">₦210,000</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surface-container-highest text-[#BBBBBB] text-[10px] font-bold uppercase tracking-tighter"
+              >Completed</span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Featured Trip/Bento Element -->
+      <div
+        class="mt-10 bg-[#181818] rounded-[24px] overflow-hidden p-6 relative"
+      >
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+          <img
+            alt="Map background"
+            class="w-full h-full object-cover grayscale invert"
+            data-alt="Abstract satellite view of a city grid with flowing traffic lines in deep red and black tones, high-tech map aesthetic"
+            data-location="Lagos"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAosCP7LbRL2Q3NQwIOUs8kbP1G2pJjW2n7mxRyL8cn7E6roQHQg5Us9-hOEVogPvFij2I4BJgRGzqqe7iVNvjHmOGaIVNz4QGkne_CfRUPr9GwZGJ78eLUtcz_hhzlWvVPGB4Bn1pLEspdilKN5ryJW-7SPWSwtlVs0Uv0CwtPTwT3i5QeW-btSa1L7zU7EoyFQq4xQbiveyAVNOUVNvWu-Yd_yraWvYidg23hQXj-z8--dFFIis-B6IZzhQffogh0mzqhD8eV8XIn"
+          />
+        </div>
+        <div class="relative z-10">
+          <p
+            class="font-syne font-bold text-[#E01F1F] text-[10px] uppercase tracking-widest mb-2"
+          >
+            Exclusive Insight
+          </p>
+          <h4
+            class="font-syne font-black text-2xl text-white mb-4 leading-tight"
+          >
+            YOU TRAVELLED 2,450KM THIS MONTH.
+          </h4>
+          <div class="flex gap-4">
+            <div
+              class="bg-black/40 backdrop-blur-md p-4 rounded-2xl flex-1 border border-white/5"
+            >
+              <p
+                class="text-[#888888] text-[10px] uppercase font-bold tracking-widest"
+              >
+                Savings
+              </p>
+              <p class="text-white font-syne font-bold text-lg">₦45k</p>
+            </div>
+            <div
+              class="bg-black/40 backdrop-blur-md p-4 rounded-2xl flex-1 border border-white/5"
+            >
+              <p
+                class="text-[#888888] text-[10px] uppercase font-bold tracking-widest"
+              >
+                Deliveries
+              </p>
+              <p class="text-white font-syne font-bold text-lg">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Bottom Navigation Shell -->
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#111111]/90 backdrop-blur-2xl rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.5)]"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined text-[28px]">home</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#E01F1F] scale-110 transition-all duration-300"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined text-[28px]"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >route</span
+        >
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Trips</span
+        >
+      </a>
+      <div class="relative -top-8">
+        <button
+          class="w-16 h-16 bg-[#E01F1F] rounded-full flex items-center justify-center shadow-[0_6px_20px_rgba(224,31,31,0.4)] active:scale-90 transition-transform duration-200"
+        >
+          <span class="material-symbols-outlined text-white text-[32px]"
+            >add</span
+          >
+        </button>
+      </div>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined text-[28px]"
+          >local_shipping</span
+        >
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Ship</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-[#888888] opacity-60 hover:opacity-100 hover:text-[#E01F1F] transition-all duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined text-[28px]">person</span>
+        <span
+          class="font-syne font-bold text-[10px] uppercase tracking-widest mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>
+
+<!-- Trips History -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics — Log In</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#e01f1f",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-fixed": "#d0e4ff",
+              "tertiary-fixed-dim": "#9acbff",
+              "surface-bright": "#3a3939",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-fixed": "#410001",
+              "on-primary-container": "#fff7f6",
+              "on-tertiary-fixed-variant": "#004a79",
+              "on-tertiary-fixed": "#001d34",
+              "on-tertiary": "#003355",
+              error: "#ffb4ab",
+              "surface-container": "#201f1f",
+              "secondary-container": "#474746",
+              "inverse-on-surface": "#313030",
+              "surface-variant": "#353534",
+              background: "#0A0A0A",
+              "secondary-fixed": "#e5e2e1",
+              secondary: "#c8c6c5",
+              "on-error": "#690005",
+              "on-primary-fixed-variant": "#930008",
+              "surface-container-low": "#111111",
+              "surface-dim": "#0A0A0A",
+              "secondary-fixed-dim": "#c8c6c5",
+              "primary-fixed": "#ffdad5",
+              "on-surface": "#e5e2e1",
+              "on-secondary-container": "#b7b4b4",
+              outline: "#ad8883",
+              "on-secondary": "#313030",
+              "inverse-primary": "#c0000f",
+              "on-background": "#e5e2e1",
+              "surface-tint": "#ffb4aa",
+              "outline-variant": "#5d3f3c",
+              "primary-fixed-dim": "#ffb4aa",
+              "tertiary-container": "#0077bf",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary": "#690004",
+              "surface-container-highest": "#181818",
+              "on-surface-variant": "#e7bdb7",
+              "on-tertiary-container": "#f7f9ff",
+              primary: "#ffb4aa",
+              "surface-container-high": "#222222",
+              surface: "#0A0A0A",
+              "on-secondary-fixed-variant": "#474746",
+              tertiary: "#9acbff",
+            },
+            fontFamily: {
+              syne: ["Syne", "sans-serif"],
+              "dm-sans": ["DM Sans", "sans-serif"],
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Manrope", "sans-serif"],
+              label: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "14px",
+              "2xl": "18px",
+              "3xl": "24px",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .kinetic-glow {
+        background: radial-gradient(
+          circle at center,
+          rgba(224, 31, 31, 0.15) 0%,
+          rgba(10, 10, 10, 0) 70%
+        );
+      }
+      .ghost-border {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .red-glow-shadow {
+        box-shadow: 0 6px 20px rgba(224, 31, 31, 0.4);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col items-center justify-start overflow-x-hidden"
+  >
+    <!-- Radial Glow Background Element -->
+    <div
+      class="fixed top-[-10%] left-1/2 -translate-x-1/2 w-[120%] h-[500px] kinetic-glow pointer-events-none z-0"
+    ></div>
+    <!-- Main Content Canvas -->
+    <main
+      class="relative z-10 w-full max-w-md px-8 pt-12 pb-24 flex flex-col items-center min-h-screen"
+    >
+      <!-- Wordmark / Logo Area -->
+      <header class="mb-16">
+        <h1
+          class="font-syle font-black text-3xl tracking-tighter text-primary-container"
+        >
+          AZINEL
+        </h1>
+      </header>
+      <!-- Welcome Text -->
+      <section class="w-full mb-12 text-center md:text-left">
+        <h2
+          class="font-syne font-extrabold text-5xl text-white mb-3 tracking-tight leading-tight"
+        >
+          Welcome Back
+        </h2>
+        <p class="text-secondary font-dm-sans text-lg opacity-80">
+          Enter your credentials to continue
+        </p>
+      </section>
+      <!-- Login Form -->
+      <form class="w-full space-y-6">
+        <!-- Phone Input Container -->
+        <div class="space-y-2">
+          <label
+            class="block font-syne font-bold text-xs uppercase tracking-widest text-secondary opacity-60 ml-1"
+            >Phone Number</label
+          >
+          <div
+            class="flex items-center bg-surface-container-highest rounded-2xl p-1 ghost-border focus-within:border-primary-container/50 transition-all"
+          >
+            <div
+              class="bg-surface-container-high px-4 py-3 rounded-xl flex items-center space-x-2 mr-2"
+            >
+              <span class="text-on-surface font-bold text-sm">+234</span>
+            </div>
+            <input
+              class="bg-transparent border-none focus:ring-0 text-white font-dm-sans w-full py-3 placeholder:text-secondary-container"
+              placeholder="800 000 0000"
+              type="tel"
+            />
+          </div>
+        </div>
+        <!-- Password Input Container -->
+        <div class="space-y-2">
+          <label
+            class="block font-syne font-bold text-xs uppercase tracking-widest text-secondary opacity-60 ml-1"
+            >Password</label
+          >
+          <div
+            class="relative flex items-center bg-surface-container-highest rounded-2xl ghost-border focus-within:border-primary-container/50 transition-all"
+          >
+            <input
+              class="bg-transparent border-none focus:ring-0 text-white font-dm-sans w-full px-5 py-4 placeholder:text-secondary-container"
+              placeholder="••••••••"
+              type="password"
+            />
+            <button
+              class="absolute right-4 text-secondary-container hover:text-primary-container transition-colors"
+              type="button"
+            >
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </div>
+          <div class="flex justify-end">
+            <a
+              class="text-primary-container font-syne font-bold text-sm hover:underline transition-all"
+              href="#"
+              >Forgot Password?</a
+            >
+          </div>
+        </div>
+        <!-- Primary CTA -->
+        <div class="pt-4">
+          <button
+            class="w-full bg-primary-container text-white font-syne font-extrabold text-lg py-5 rounded-xl red-glow-shadow active:scale-[0.98] transition-all tracking-wide"
+            type="submit"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+      <!-- Divider -->
+      <div class="w-full flex items-center justify-center my-10 space-x-4">
+        <div class="h-[1px] flex-grow bg-white/5"></div>
+        <span
+          class="text-secondary font-dm-sans text-sm opacity-40 uppercase tracking-[0.2em] whitespace-nowrap"
+          >or continue with</span
+        >
+        <div class="h-[1px] flex-grow bg-white/5"></div>
+      </div>
+      <!-- Social Auth -->
+      <div class="w-full grid grid-cols-2 gap-4">
+        <button
+          class="flex items-center justify-center space-x-3 bg-surface-container-low ghost-border py-4 rounded-xl hover:bg-surface-container-high transition-colors"
+        >
+          <div class="w-5 h-5 flex items-center justify-center">
+            <!-- Placeholder for Social Icon -->
+            <span
+              class="material-symbols-outlined text-xl"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >google</span
+            >
+          </div>
+          <span class="font-dm-sans font-bold text-sm">Google</span>
+        </button>
+        <button
+          class="flex items-center justify-center space-x-3 bg-surface-container-low ghost-border py-4 rounded-xl hover:bg-surface-container-high transition-colors"
+        >
+          <div class="w-5 h-5 flex items-center justify-center">
+            <span
+              class="material-symbols-outlined text-xl"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >ios</span
+            >
+          </div>
+          <span class="font-dm-sans font-bold text-sm">Apple</span>
+        </button>
+      </div>
+      <!-- Sticky Footer -->
+      <footer class="mt-auto pt-16 pb-8 text-center">
+        <p class="font-dm-sans text-secondary text-sm">
+          Don't have an account?
+          <a
+            class="text-primary-container font-bold ml-1 hover:underline"
+            href="#"
+            >Sign Up</a
+          >
+        </p>
+      </footer>
+    </main>
+    <!-- Visual Accents (Editorial Overlaps) -->
+    <div
+      class="fixed bottom-[-10%] right-[-10%] w-[400px] h-[400px] opacity-10 pointer-events-none z-0"
+    >
+      <img
+        class="grayscale mix-blend-screen w-full h-full object-contain rotate-12"
+        data-alt="abstract close-up of a high-performance sports car engine with metallic surfaces and dramatic deep shadows in noir style"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_EJl7Ty7WozSdSOwjHDWKWFgYD2IMnERiNuCo6yaEXNyE6BbXxfVsFxN83XTc3j5X6hKmwj5ww4uxA4ikPeU4Gm-Y3sAo3eWvaqnLYYMY72Ox-X9E-YJA5qZe-BEHv6-JfqQIXWhHo9twreg03OViGHjIhNk1jDn-CNK6BuL1iwgvqXsMVfnE1UUAoqSc6T4c9a17DtkcFccLFgYAnYpP7slUUZIWSW-yK3AyFT9EOsMAzCpeUURBw1rRmeF7-Py5BditBgcSl78f"
+      />
+    </div>
+  </body>
+</html>
+
+<!-- Log In -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Trip Completed</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&amp;family=DM+Sans:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed": "#e5e2e1",
+              "inverse-primary": "#c0000f",
+              "surface-dim": "#131313",
+              surface: "#131313",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#0077bf",
+              tertiary: "#9acbff",
+              "on-primary-fixed": "#410001",
+              "on-error": "#690005",
+              "on-tertiary": "#003355",
+              "primary-fixed-dim": "#ffb4aa",
+              primary: "#ffb4aa",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#c8c6c5",
+              "secondary-container": "#474746",
+              "on-tertiary-fixed-variant": "#004a79",
+              "surface-bright": "#3a3939",
+              "primary-fixed": "#ffdad5",
+              outline: "#ad8883",
+              "on-secondary-container": "#b7b4b4",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              error: "#ffb4ab",
+              "on-primary-fixed-variant": "#930008",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "surface-variant": "#353534",
+              "surface-tint": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              background: "#0A0A0A",
+              "tertiary-fixed-dim": "#9acbff",
+              "primary-container": "#e01f1f",
+              "outline-variant": "#5d3f3c",
+              "on-primary": "#690004",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#001d34",
+              "on-surface": "#e5e2e1",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary-container": "#fff7f6",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#313030",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-fixed-variant": "#474746",
+              "tertiary-fixed": "#d0e4ff",
+            },
+            fontFamily: {
+              headline: ["Syne", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+              label: ["Syne", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glow-bg {
+        background: radial-gradient(
+          circle at center,
+          rgba(224, 31, 31, 0.15) 0%,
+          rgba(10, 10, 10, 1) 70%
+        );
+      }
+      .kinetic-shadow {
+        box-shadow: 0 10px 40px rgba(224, 31, 31, 0.2);
+      }
+      .ghost-border {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0A0A0A] text-on-surface font-body selection:bg-primary-container/30"
+  >
+    <!-- Top App Bar (Suppressing standard nav for transactional focus) -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#111111]/80 backdrop-blur-2xl px-6 h-16 flex justify-between items-center"
+    >
+      <div
+        class="text-2xl font-black text-[#E01F1F] tracking-tighter font-headline uppercase"
+      >
+        AZINEL
+      </div>
+      <div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+        <img
+          class="w-full h-full object-cover"
+          data-alt="professional portrait of a premium member in high-end studio lighting with dark background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5K9gOPpq5s7iTMUYWoZPN1L1PafrtOI8RMv52RpF8WWXMuZNZ505Ruq3Khb8PLrsfboKEoYRJD83gErDveHnBysC_FBg07GPi2yj4rBQZBGBplvbNSVkkeafLBQUSjehaCGnWVUmSQrKgAL85CzF8D1rwadFvj8-eZe6ZcTTWNRlJbykvw_Iy64KgLFBZKr770aplxQCUYyf68TcLsXRsk256mu-yhhC6CNAwmg8WawjF3jUtP7AbmhrCOEYjWEhomI-x9iRzpDkj"
+        />
+      </div>
+    </header>
+    <main
+      class="min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center glow-bg"
+    >
+      <!-- Success State -->
+      <div class="flex flex-col items-center mb-12">
+        <div
+          class="w-24 h-24 rounded-full bg-primary-container/10 flex items-center justify-center mb-6 shadow-[0_0_50px_rgba(224,31,31,0.3)] border border-primary-container/20"
+        >
+          <span
+            class="material-symbols-outlined text-primary-container text-6xl"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >check_circle</span
+          >
+        </div>
+        <h1
+          class="font-headline font-black text-4xl md:text-6xl text-center uppercase tracking-tighter leading-none mb-2"
+        >
+          Trip Completed!
+        </h1>
+        <p class="text-[#888888] font-medium tracking-widest text-sm uppercase">
+          You have arrived at your destination
+        </p>
+      </div>
+      <!-- Receipt Card -->
+      <div
+        class="w-full max-w-md bg-[#111111] rounded-3xl p-8 mb-8 ghost-border relative overflow-hidden"
+      >
+        <div class="absolute top-0 right-0 p-4">
+          <span
+            class="text-[10px] font-bold tracking-[0.2em] text-[#E01F1F] uppercase bg-primary-container/10 px-3 py-1 rounded-full"
+            >Final Invoice</span
+          >
+        </div>
+        <div class="space-y-6">
+          <div class="flex justify-between items-end">
+            <div>
+              <p class="text-[#888888] text-xs uppercase tracking-widest mb-1">
+                Total Fare
+              </p>
+              <h2
+                class="text-5xl font-headline font-black text-[#E01F1F] tracking-tighter"
+              >
+                $428.50
+              </h2>
+            </div>
+            <div class="text-right">
+              <p class="text-[#888888] text-xs uppercase tracking-widest mb-1">
+                Vehicle
+              </p>
+              <p class="font-bold text-on-surface">Mercedes-Benz S-Class</p>
+            </div>
+          </div>
+          <div class="space-y-4 pt-6 border-t border-white/5">
+            <div class="flex items-start gap-4">
+              <span
+                class="material-symbols-outlined text-primary-container text-sm mt-1"
+                >trip_origin</span
+              >
+              <div>
+                <p class="text-[#888888] text-[10px] uppercase tracking-widest">
+                  Pickup
+                </p>
+                <p class="text-sm font-medium">Mandarin Oriental, New York</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span
+                class="material-symbols-outlined text-primary-container text-sm mt-1"
+                >location_on</span
+              >
+              <div>
+                <p class="text-[#888888] text-[10px] uppercase tracking-widest">
+                  Destination
+                </p>
+                <p class="text-sm font-medium">
+                  JFK International Airport (T4)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Rating Section -->
+      <div class="w-full max-w-md space-y-8">
+        <div class="text-center space-y-4">
+          <p
+            class="font-headline font-bold text-lg text-on-surface uppercase tracking-wide"
+          >
+            Rate your experience
+          </p>
+          <div class="flex justify-center gap-3">
+            <span
+              class="material-symbols-outlined text-primary-container text-4xl cursor-pointer"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >star</span
+            >
+            <span
+              class="material-symbols-outlined text-primary-container text-4xl cursor-pointer"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >star</span
+            >
+            <span
+              class="material-symbols-outlined text-primary-container text-4xl cursor-pointer"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >star</span
+            >
+            <span
+              class="material-symbols-outlined text-primary-container text-4xl cursor-pointer"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >star</span
+            >
+            <span
+              class="material-symbols-outlined text-primary-container text-4xl cursor-pointer"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >star</span
+            >
+          </div>
+        </div>
+        <div class="space-y-4">
+          <label class="block">
+            <span class="sr-only">Comments</span>
+            <textarea
+              class="w-full bg-[#181818] border-none rounded-2xl p-4 text-on-surface placeholder-[#555555] focus:ring-1 focus:ring-primary-container transition-all"
+              placeholder="Leave a comment about the chauffeur or vehicle..."
+              rows="3"
+            ></textarea>
+          </label>
+          <div class="flex flex-col gap-3">
+            <button
+              class="w-full bg-primary-container text-white font-headline font-bold py-5 rounded-[14px] uppercase tracking-widest text-sm kinetic-shadow active:scale-[0.98] transition-all"
+            >
+              Submit Rating
+            </button>
+            <button
+              class="w-full bg-transparent text-[#BBBBBB] font-headline font-bold py-5 rounded-[14px] uppercase tracking-widest text-sm ghost-border active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+            >
+              <span class="material-symbols-outlined text-sm">download</span>
+              Download Receipt
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Secondary CTA -->
+      <div class="mt-12">
+        <a
+          class="text-[#888888] text-xs font-bold uppercase tracking-[0.3em] hover:text-primary-container transition-colors"
+          href="#"
+          >Return to Dashboard</a
+        >
+      </div>
+    </main>
+    <!-- Navigation suppressed for transaction focus as per rules -->
+    <style>
+      /* Custom UI Tweaks for kinetic noir feel */
+      body {
+        background-color: #0a0a0a;
+      }
+
+      textarea:focus {
+        outline: none;
+        box-shadow: 0 0 15px rgba(224, 31, 31, 0.1);
+      }
+
+      /* Minimalistic Red Glow Effects */
+      .glow-bg::before {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: 80vh;
+        background: radial-gradient(
+          circle,
+          rgba(224, 31, 31, 0.05) 0%,
+          rgba(10, 10, 10, 0) 70%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
+    </style>
+  </body>
+</html>
+
+<!-- Trip Completed -->
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Azinel Logistics - Booking</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed": "#e5e2e1",
+              "inverse-primary": "#c0000f",
+              "surface-dim": "#131313",
+              surface: "#131313",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#0077bf",
+              tertiary: "#9acbff",
+              "on-primary-fixed": "#410001",
+              "on-error": "#690005",
+              "on-tertiary": "#003355",
+              "primary-fixed-dim": "#ffb4aa",
+              primary: "#ffb4aa",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#c8c6c5",
+              "secondary-container": "#474746",
+              "on-tertiary-fixed-variant": "#004a79",
+              "surface-bright": "#3a3939",
+              "primary-fixed": "#ffdad5",
+              outline: "#ad8883",
+              "on-secondary-container": "#b7b4b4",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "on-surface-variant": "#e7bdb7",
+              error: "#ffb4ab",
+              "on-primary-fixed-variant": "#930008",
+              secondary: "#c8c6c5",
+              "on-tertiary-container": "#f7f9ff",
+              "surface-variant": "#353534",
+              "surface-tint": "#ffb4aa",
+              "surface-container-high": "#2a2a2a",
+              background: "#131313",
+              "tertiary-fixed-dim": "#9acbff",
+              "primary-container": "#e01f1f",
+              "outline-variant": "#5d3f3c",
+              "on-primary": "#690004",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#001d34",
+              "on-surface": "#e5e2e1",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-primary-container": "#fff7f6",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#313030",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-fixed-variant": "#474746",
+              "tertiary-fixed": "#d0e4ff",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Manrope"],
+              label: ["Space Grotesk"],
+              syne: ["Syne"],
+              dmsans: ["DM Sans"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0a0a;
+        color: #e5e2e1;
+        font-family: "DM Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .red-glow {
+        box-shadow: 0 0 20px rgba(224, 31, 31, 0.4);
+      }
+      .glass-panel {
+        backdrop-filter: blur(20px);
+        background: rgba(17, 17, 17, 0.8);
+      }
+      .kinetic-gradient {
+        background: linear-gradient(135deg, #e01f1f 0%, #b81010 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col pb-24">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-2xl flex justify-between items-center px-6 h-16 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+    >
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-[#E01F1F]">menu</span>
+        <h1
+          class="font-['Syne'] font-black tracking-tighter uppercase text-2xl text-[#E01F1F]"
+        >
+          AZINEL
+        </h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <span
+          class="font-['Syne'] font-bold text-[#E01F1F] text-sm hidden md:block"
+          >BOOK TRIP</span
+        >
+        <div
+          class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-white/10"
+        >
+          <img
+            alt="User Profile"
+            data-alt="close up professional portrait of a business executive with modern lighting and dark background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmqCzOYJptkiJHz5ErehWdkXoRuigTzBZNDaaLseBhsASgXhN3MdoVaM98F3sW0wb-cWsXMqYopYN8Tz98T-G35n8Yu2HwxVg9j_TGJNgTU_X4Wx4rWSn6Ew8zoSzSLzdt3jNAQH2BzpmyW6Cv-JTqtSNHmy-jjmq5LAA5VjXGccN2qZIQTN3lpKVDARK4cHnc8bKhmKlE3JmnfUZxzTZDWmjobxx0NrNSC06JZT9JgavYNPHgXNimskSSu6beAiVqFefBkEpdIJ8Q"
+          />
+        </div>
+      </div>
+    </header>
+    <main class="mt-20 px-6 max-w-2xl mx-auto w-full space-y-8">
+      <!-- Header Section -->
+      <section class="space-y-1">
+        <p
+          class="font-['Syne'] text-[#E01F1F] font-bold text-xs uppercase tracking-[0.2em]"
+        >
+          Logistics Portal
+        </p>
+        <h2
+          class="font-['Syne'] font-black text-4xl tracking-tighter uppercase"
+        >
+          Book Trip
+        </h2>
+      </section>
+      <!-- Map Preview Card -->
+      <div
+        class="relative w-full h-64 rounded-[24px] overflow-hidden bg-[#111111] shadow-2xl group"
+      >
+        <div
+          class="absolute inset-0 opacity-40 bg-[radial-gradient(#E01F1F_1px,transparent_1px)] [background-size:16px_16px]"
+        ></div>
+        <img
+          class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity grayscale contrast-125"
+          data-alt="Dark stylized map of a metropolitan city with glowing red route lines and grid overlay in high contrast noir style"
+          data-location="New York City"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjOkR0aX1VU4yWTRBg9NDnwA5qvzHIN0-JRDCPnAYArrT73Ssx2AL6sV6Loa5qrl_zGzAqdf_-V5-jhvbl5VrOcII-pkGHOLDNAyS6ADfdtf5gXd9rzWIcAoXWOyU6RhIUnQtiZsdWdIdsWy4MEnqIR4TPnNzCtTDmZQsJyKlEyP2jFandc3Mnigxaz0QynVQ3lvr0fcHJUqt70KAYqy3EyIThBHiLilGYL0OeFHKCI-Kaq48cD__K3pP0JfCq_eoyVIjMDMqZo24q"
+        />
+        <!-- Route Overlay (Stylized) -->
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none"
+        >
+          <div
+            class="w-4/5 h-px bg-[#E01F1F] relative shadow-[0_0_15px_#E01F1F]"
+          >
+            <div
+              class="absolute -left-1 -top-1 w-3 h-3 bg-[#E01F1F] rounded-full ring-4 ring-[#E01F1F]/20"
+            ></div>
+            <div
+              class="absolute -right-1 -top-1 w-3 h-3 bg-white rounded-full ring-4 ring-white/20"
+            ></div>
+          </div>
+        </div>
+        <!-- Trip Metadata Overlay -->
+        <div
+          class="absolute bottom-4 left-4 right-4 flex justify-between items-end"
+        >
+          <div
+            class="glass-panel p-4 rounded-2xl border border-white/5 space-y-1"
+          >
+            <p class="text-[10px] uppercase tracking-widest text-[#888888]">
+              Distance
+            </p>
+            <p class="font-['Syne'] font-bold text-white">12.4 KM</p>
+          </div>
+          <div
+            class="glass-panel p-4 rounded-2xl border border-white/5 space-y-1 text-right"
+          >
+            <p class="text-[10px] uppercase tracking-widest text-[#888888]">
+              Est. Time
+            </p>
+            <p class="font-['Syne'] font-bold text-white">22 MIN</p>
+          </div>
+        </div>
+      </div>
+      <!-- Vehicle Selection -->
+      <section class="space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-['Syne'] font-bold text-lg uppercase tracking-tight">
+            Select Fleet
+          </h3>
+          <span
+            class="text-[10px] font-bold text-[#888888] uppercase tracking-widest"
+            >Available Now</span
+          >
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <!-- Sedan - Selected -->
+          <button
+            class="bg-primary-container/10 border-2 border-[#E01F1F] rounded-[20px] p-4 flex flex-col items-center gap-3 transition-transform active:scale-95 shadow-[0_0_20px_rgba(224,31,31,0.2)]"
+          >
+            <span class="material-symbols-outlined text-[#E01F1F] text-3xl"
+              >directions_car</span
+            >
+            <div class="text-center">
+              <p class="font-['Syne'] font-bold text-xs uppercase text-white">
+                Sedan
+              </p>
+              <p class="text-[10px] text-[#E01F1F] font-bold">$42.00</p>
+            </div>
+          </button>
+          <!-- SUV -->
+          <button
+            class="bg-[#111111] border border-white/5 rounded-[20px] p-4 flex flex-col items-center gap-3 transition-colors hover:bg-[#181818] active:scale-95"
+          >
+            <span class="material-symbols-outlined text-[#888888] text-3xl"
+              >airport_shuttle</span
+            >
+            <div class="text-center">
+              <p
+                class="font-['Syne'] font-bold text-xs uppercase text-[#888888]"
+              >
+                SUV
+              </p>
+              <p class="text-[10px] text-[#BBBBBB] font-bold">$65.00</p>
+            </div>
+          </button>
+          <!-- Bike -->
+          <button
+            class="bg-[#111111] border border-white/5 rounded-[20px] p-4 flex flex-col items-center gap-3 transition-colors hover:bg-[#181818] active:scale-95"
+          >
+            <span class="material-symbols-outlined text-[#888888] text-3xl"
+              >two_wheeler</span
+            >
+            <div class="text-center">
+              <p
+                class="font-['Syne'] font-bold text-xs uppercase text-[#888888]"
+              >
+                Bike
+              </p>
+              <p class="text-[10px] text-[#BBBBBB] font-bold">$18.50</p>
+            </div>
+          </button>
+        </div>
+      </section>
+      <!-- Negotiate Fare Panel -->
+      <section
+        class="bg-[#111111] rounded-[24px] overflow-hidden shadow-2xl border-t-4 border-[#E01F1F]"
+      >
+        <div class="p-6 space-y-8">
+          <div class="flex justify-between items-start">
+            <div class="space-y-1">
+              <h3
+                class="font-['Syne'] font-bold text-xl uppercase tracking-tighter"
+              >
+                Negotiate Fare
+              </h3>
+              <p class="text-xs text-[#888888] font-['DM_Sans']">
+                Secure the best rate for your route
+              </p>
+            </div>
+            <span class="material-symbols-outlined text-[#E01F1F]">gavel</span>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1 space-y-2">
+              <p
+                class="text-[10px] uppercase tracking-[0.2em] text-[#888888] font-bold"
+              >
+                Driver Asking
+              </p>
+              <div class="bg-[#181818] p-4 rounded-2xl border border-white/5">
+                <p
+                  class="font-['Syne'] font-black text-2xl text-white tracking-tighter"
+                >
+                  $48.00
+                </p>
+              </div>
+            </div>
+            <div class="pt-6">
+              <span class="material-symbols-outlined text-[#444444]"
+                >compare_arrows</span
+              >
+            </div>
+            <div class="flex-1 space-y-2">
+              <p
+                class="text-[10px] uppercase tracking-[0.2em] text-[#E01F1F] font-bold text-right"
+              >
+                Your Offer
+              </p>
+              <div
+                class="bg-primary-container/5 p-4 rounded-2xl border border-[#E01F1F]/30 text-right"
+              >
+                <p
+                  class="font-['Syne'] font-black text-2xl text-[#E01F1F] tracking-tighter"
+                >
+                  $42.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Fare Slider -->
+          <div class="space-y-4 px-2">
+            <div
+              class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-[#555555]"
+            >
+              <span>$35.00 (Low)</span>
+              <span>$55.00 (High)</span>
+            </div>
+            <div class="relative w-full h-1.5 bg-[#181818] rounded-full">
+              <div
+                class="absolute left-0 h-full w-[35%] bg-[#E01F1F] rounded-full"
+              ></div>
+              <div
+                class="absolute left-[35%] -top-2 w-6 h-6 bg-white rounded-full border-4 border-[#E01F1F] shadow-[0_0_15px_rgba(224,31,31,0.5)] cursor-pointer"
+              ></div>
+            </div>
+          </div>
+          <button
+            class="w-full kinetic-gradient py-5 rounded-2xl font-['Syne'] font-black text-white uppercase tracking-[0.15em] text-sm red-glow transition-transform active:scale-95 flex items-center justify-center gap-3"
+          >
+            Confirm Booking
+            <span class="material-symbols-outlined text-sm">bolt</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 w-full rounded-t-[24px] z-50 bg-[#111111]/90 backdrop-blur-xl flex justify-around items-center py-4 px-8 shadow-[0_-10px_40px_rgba(224,31,31,0.15)] md:hidden"
+    >
+      <a
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90 duration-200"
+        href="#"
+      >
+        <span class="material-symbols-outlined">search</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-[#E01F1F] bg-[#E01F1F]/10 rounded-full p-3 shadow-[0_0_15px_rgba(224,31,31,0.4)] active:scale-90 duration-200"
+        href="#"
+      >
+        <span class="material-symbols-outlined">explore</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90 duration-200"
+        href="#"
+      >
+        <span class="material-symbols-outlined">analytics</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-[#888888] p-3 hover:text-white transition-all active:scale-90 duration-200"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+      </a>
+    </nav>
+  </body>
+</html>

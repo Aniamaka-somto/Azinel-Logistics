@@ -7,9 +7,9 @@ const Hero = () => {
       <div className="absolute -top-[60px] -right-[80px] w-[560px] h-[560px] bg-[radial-gradient(circle,_hsl(0_85%_48%_/_0.18)_0%,_transparent_70%)] pointer-events-none" />
 
       <Reveal>
-        <div className="inline-flex items-center gap-2 bg-secondary text-background px-3.5 py-1.5 rounded-full sm:text-xs text-[10px] font-semibold uppercase tracking-[0.08em] mb-6">
+        <div className="inline-flex items-center gap-2 bg-secondary text-background px-3.5 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em] mb-6">
           <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-          Intercity Travel &amp; Logistics — Nigeria
+          Azinel Logistics, your comfort our priority
         </div>
 
         <h1 className="text-[clamp(2.8rem,5.5vw,5rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-foreground mb-6">
@@ -40,7 +40,7 @@ const Hero = () => {
 
         <div className="flex gap-10 border-t border-foreground/10 pt-9">
           <div>
-            <div className="font-display text-[2rem] font-extrabold text-foreground leading-none">
+            <div className="font-display text-[1.5rem] sm:text-[2rem] font-extrabold text-foreground leading-none">
               36+
             </div>
             <div className="text-xs text-muted-foreground mt-1">
@@ -48,7 +48,7 @@ const Hero = () => {
             </div>
           </div>
           <div>
-            <div className="font-display text-[2rem] font-extrabold text-foreground leading-none">
+            <div className="font-display text-[1.5rem] sm:text-[2rem] font-extrabold text-foreground leading-none">
               2-in-1
             </div>
             <div className="text-xs text-muted-foreground mt-1">
@@ -56,7 +56,7 @@ const Hero = () => {
             </div>
           </div>
           <div>
-            <div className="font-display text-[2rem] font-extrabold text-foreground leading-none">
+            <div className="font-display text-[1.5rem] sm:text-[2rem] font-extrabold text-foreground leading-none">
               20%
             </div>
             <div className="text-xs text-muted-foreground mt-1">

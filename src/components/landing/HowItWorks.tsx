@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
+import apple from "/apple-logo-svgrepo-com.svg";
+import play from "/google-play-store-icon.svg";
 
 const steps = [
   {
@@ -36,8 +38,9 @@ const HowItWorks = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-[60px]">
         <div>
           <Reveal>
-            <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-extrabold leading-[1.1] tracking-[-0.03em] mb-4">
-              Booking a ride has never been this <em className="not-italic text-primary">straightforward</em>
+            <h2 className="text-[clamp(1.8rem,4vw,3.2rem)] sm:text-[clamp(2rem,4vw,3.2rem)] font-extrabold leading-[1.1] tracking-[-0.03em] mb-4">
+              Booking a ride has never been this{" "}
+              <em className="not-italic text-primary">straightforward</em>
             </h2>
           </Reveal>
 
@@ -61,7 +64,9 @@ const HowItWorks = () => {
                     <h4 className="text-base font-bold mb-1.5 group-hover:text-primary transition-colors">
                       {step.title}
                     </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
                 </div>
               </Reveal>
@@ -72,24 +77,145 @@ const HowItWorks = () => {
         {/* Route visualization */}
         <Reveal className="bg-secondary rounded-[28px] p-10 aspect-[4/3] flex items-center justify-center relative overflow-hidden">
           <div className="absolute -bottom-10 -right-10 w-[200px] h-[200px] bg-[radial-gradient(circle,_hsl(0_85%_48%_/_0.3)_0%,_transparent_70%)]" />
-          <svg width="100%" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="170" cy="130" r="100" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-            <circle cx="170" cy="130" r="70" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-            <path d="M80 180 Q130 100 170 130 Q210 160 260 80" fill="none" stroke="hsl(0, 85%, 48%)" strokeWidth="2.5" strokeDasharray="8 4" opacity="0.8" />
-            <circle cx="80" cy="180" r="10" fill="hsl(0, 0%, 18%)" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
-            <text x="80" y="184" textAnchor="middle" fill="white" fontSize="9" fontFamily="sans-serif" fontWeight="bold">A</text>
-            <circle cx="170" cy="130" r="6" fill="hsl(0, 85%, 48%, 0.5)" stroke="hsl(0, 85%, 48%)" strokeWidth="1.5" />
-            <circle cx="260" cy="80" r="10" fill="hsl(0, 85%, 48%)" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
-            <text x="260" y="84" textAnchor="middle" fill="white" fontSize="9" fontFamily="sans-serif" fontWeight="bold">B</text>
-            <text x="68" y="202" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Port Harcourt</text>
-            <text x="262" y="70" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Abuja</text>
+          <svg
+            width="100%"
+            viewBox="0 0 340 260"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="170"
+              cy="130"
+              r="100"
+              fill="rgba(255,255,255,0.03)"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="1"
+            />
+            <circle
+              cx="170"
+              cy="130"
+              r="70"
+              fill="rgba(255,255,255,0.03)"
+              stroke="rgba(255,255,255,0.06)"
+              strokeWidth="1"
+            />
+            <path
+              d="M80 180 Q130 100 170 130 Q210 160 260 80"
+              fill="none"
+              stroke="hsl(0, 85%, 48%)"
+              strokeWidth="2.5"
+              strokeDasharray="8 4"
+              opacity="0.8"
+            />
+            <circle
+              cx="80"
+              cy="180"
+              r="10"
+              fill="hsl(0, 0%, 18%)"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="80"
+              y="184"
+              textAnchor="middle"
+              fill="white"
+              fontSize="9"
+              fontFamily="sans-serif"
+              fontWeight="bold"
+            >
+              A
+            </text>
+            <circle
+              cx="170"
+              cy="130"
+              r="6"
+              fill="hsl(0, 85%, 48%, 0.5)"
+              stroke="hsl(0, 85%, 48%)"
+              strokeWidth="1.5"
+            />
+            <circle
+              cx="260"
+              cy="80"
+              r="10"
+              fill="hsl(0, 85%, 48%)"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="260"
+              y="84"
+              textAnchor="middle"
+              fill="white"
+              fontSize="9"
+              fontFamily="sans-serif"
+              fontWeight="bold"
+            >
+              B
+            </text>
+            <text
+              x="68"
+              y="202"
+              fill="rgba(255,255,255,0.5)"
+              fontSize="9"
+              fontFamily="sans-serif"
+              textAnchor="middle"
+            >
+              Port Harcourt
+            </text>
+            <text
+              x="262"
+              y="70"
+              fill="rgba(255,255,255,0.5)"
+              fontSize="9"
+              fontFamily="sans-serif"
+              textAnchor="middle"
+            >
+              Abuja
+            </text>
             <g transform="translate(152, 112)">
-              <rect x="0" y="6" width="28" height="14" rx="3" fill="hsl(0, 85%, 48%)" />
-              <rect x="4" y="2" width="20" height="10" rx="2" fill="hsl(0, 85%, 48%, 0.7)" />
-              <circle cx="6" cy="20" r="3.5" fill="hsl(0, 0%, 12%)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
-              <circle cx="22" cy="20" r="3.5" fill="hsl(0, 0%, 12%)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+              <rect
+                x="0"
+                y="6"
+                width="28"
+                height="14"
+                rx="3"
+                fill="hsl(0, 85%, 48%)"
+              />
+              <rect
+                x="4"
+                y="2"
+                width="20"
+                height="10"
+                rx="2"
+                fill="hsl(0, 85%, 48%, 0.7)"
+              />
+              <circle
+                cx="6"
+                cy="20"
+                r="3.5"
+                fill="hsl(0, 0%, 12%)"
+                stroke="rgba(255,255,255,0.4)"
+                strokeWidth="1"
+              />
+              <circle
+                cx="22"
+                cy="20"
+                r="3.5"
+                fill="hsl(0, 0%, 12%)"
+                stroke="rgba(255,255,255,0.4)"
+                strokeWidth="1"
+              />
             </g>
-            <text x="170" y="248" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="sans-serif">~7 hrs · ₦28,500 base fare</text>
+            <text
+              x="170"
+              y="248"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontFamily="sans-serif"
+            >
+              ~7 hrs · ₦28,500 base fare
+            </text>
           </svg>
         </Reveal>
       </div>
